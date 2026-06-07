@@ -1,16 +1,12 @@
 import Link from "next/link";
-import { BrandChips } from "@/components/user/BrandChips";
-import { ProductCard } from "@/components/user/ProductCard";
+import { HomeFeed } from "@/components/user/HomeFeed";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
-import { getActiveListings, getBrands } from "@/data/queries";
+import { getActiveListings } from "@/data/queries";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [listings, brands] = await Promise.all([
-    getActiveListings(),
-    getBrands(),
-  ]);
+  const listings = await getActiveListings();
 
   return (
     <>
@@ -30,24 +26,7 @@ export default async function HomePage() {
         </Link>
       </section>
 
-      <section className="mt-stack-lg">
-        <BrandChips brands={brands} />
-      </section>
-
-      <section className="mt-stack-lg flex items-center justify-between px-margin-mobile">
-        <h2 className="text-headline-md text-on-surface">Tavsiya etamiz</h2>
-        <Link href="/user/search" className="text-label-md text-primary">
-          Barchasi
-        </Link>
-      </section>
-
-      <main className="mt-stack-md px-margin-mobile">
-        <div className="grid grid-cols-2 gap-gutter">
-          {listings.map((listing) => (
-            <ProductCard key={listing.id} listing={listing} />
-          ))}
-        </div>
-      </main>
+      <HomeFeed listings={listings} />
     </>
   );
 }

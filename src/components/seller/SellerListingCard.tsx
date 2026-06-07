@@ -72,13 +72,6 @@ export function SellerListingCard({
             >
               {listing.statusLabel}
             </span>
-            <button
-              type="button"
-              aria-label="E'lon amallari"
-              className="text-outline transition-colors hover:text-primary"
-            >
-              <MaterialSymbol name="more_vert" />
-            </button>
           </div>
           <h3 className="mt-1 line-clamp-1 text-title-md">{listing.title}</h3>
           <p className="mt-0.5 font-bold text-primary">{formatPriceFull(listing.price)}</p>

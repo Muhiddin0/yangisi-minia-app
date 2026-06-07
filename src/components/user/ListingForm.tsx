@@ -4,7 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
-import { createListing, getBrandOptions } from "@/data/client";
+import {
+  createListing,
+  getBrandOptions,
+  getMyListings,
+  USER_LISTING_LIMIT,
+} from "@/data/client";
 import { MediaUploader } from "@/components/common/form/MediaUploader";
 import { ChipSelect } from "@/components/common/form/ChipSelect";
 import { FieldLabel, TextArea, TextField } from "@/components/common/form/Fields";
@@ -58,6 +63,8 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
   const [description, setDescription] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  // Individual posters are limited; null = still counting.
+  const [userListingCount, setUserListingCount] = useState<number | null>(null);
 
   useEffect(() => {
     getBrandOptions()
@@ -67,6 +74,21 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
       })
       .catch(() => {});
   }, []);
+
+  useEffect(() => {
+    if (mode !== "user" || !user) return;
+    let active = true;
+    getMyListings(user.id)
+      .then((list) => {
+        if (active) {
+          setUserListingCount(list.filter((l) => l.status !== "sold").length);
+        }
+      })
+      .catch(() => active && setUserListingCount(0));
+    return () => {
+      active = false;
+    };
+  }, [mode, user]);
 
   if (loading) {
     return <Spinner />;
@@ -92,6 +114,21 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
         body="Sotuvchi panelidan e'lon joylash uchun do'koningiz tasdiqlangan bo'lishi kerak."
         cta="Sotuvchi bo'lish"
         href="/user/become-seller"
+      />
+    );
+  }
+
+  if (mode === "user" && userListingCount === null) {
+    return <Spinner />;
+  }
+
+  if (mode === "user" && (userListingCount ?? 0) >= USER_LISTING_LIMIT) {
+    return (
+      <Notice
+        title="E'lon limiti to'ldi"
+        body={`Oddiy foydalanuvchilar bir vaqtda ko'pi bilan ${USER_LISTING_LIMIT} ta e'lon joylashi mumkin. Yangi e'lon qo'shish uchun avval mavjudlaridan birini o'chiring yoki sotilgan deb belgilang.`}
+        cta="E'lonlarimni boshqarish"
+        href="/user/listings"
       />
     );
   }
@@ -126,8 +163,13 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
       } else {
         router.replace("/user");
       }
-    } catch {
-      setError("E'lonni joylab bo'lmadi. Maydonlarni tekshirib, qayta urinib ko'ring.");
+    } catch (e) {
+      const message = e instanceof Error ? e.message : "";
+      setError(
+        message && !message.toLowerCase().includes("failed")
+          ? message
+          : "E'lonni joylab bo'lmadi. Maydonlarni tekshirib, qayta urinib ko'ring.",
+      );
       setBusy(false);
     }
   };
@@ -265,7 +307,9 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
 
       {mode === "user" && (
         <p className="text-body-md text-on-surface-variant">
-          E&apos;loningiz e&apos;lon qilinishidan oldin tekshiruvdan o&apos;tadi.
+          E&apos;loningiz e&apos;lon qilinishidan oldin tekshiruvdan o&apos;tadi.{" "}
+          Yana {Math.max(0, USER_LISTING_LIMIT - (userListingCount ?? 0))} ta
+          e&apos;lon joylashingiz mumkin.
         </p>
       )}
 

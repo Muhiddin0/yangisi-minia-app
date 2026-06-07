@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { ShopTabs } from "@/components/user/ShopTabs";
-import { ProductCard } from "@/components/user/ProductCard";
+import { ContactSellerButton } from "@/components/user/ContactSellerButton";
 import { Img } from "@/components/common/Img";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
 import { getShopById, getShopListings } from "@/data/queries";
@@ -81,25 +81,17 @@ export default async function ShopPage({
               <MaterialSymbol name="call" />
               <span>Qo&apos;ng&apos;iroq</span>
             </a>
-            <button
-              type="button"
+            <ContactSellerButton
+              telegram={shop.telegram}
               className="flex items-center justify-center gap-2 rounded-xl bg-secondary-container py-3 font-bold text-on-secondary-container transition-all hover:bg-outline-variant/30 active:scale-95"
             >
               <MaterialSymbol name="chat" />
               <span>Yozish</span>
-            </button>
+            </ContactSellerButton>
           </div>
         </section>
 
-        <ShopTabs
-          listingsSlot={
-            <section className="mt-stack-md grid grid-cols-2 gap-gutter pb-4">
-              {listings.map((listing) => (
-                <ProductCard key={listing.id} listing={listing} />
-              ))}
-            </section>
-          }
-        />
+        <ShopTabs listings={listings} />
       </main>
     </>
   );

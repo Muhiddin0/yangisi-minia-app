@@ -1,11 +1,14 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useMemo, useState } from "react";
+import type { ReactNode } from "react";
+import type { Listing } from "@/lib/types";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
+import { ProductCard } from "./ProductCard";
 import { ChipRow } from "./ChipRow";
 import { cn } from "@/lib/cn";
 
-const CATEGORIES = ["Barchasi", "iPhone", "Samsung", "Xiaomi", "Google Pixel"];
+const ALL = "Barchasi";
 
 const DEMO_REVIEWS = [
   { name: "Jasur K.", rating: 5, text: "Tez yetkazib berishdi, telefon aynan tavsifdagidek. Tavsiya qilaman!" },
@@ -13,9 +16,30 @@ const DEMO_REVIEWS = [
   { name: "Bekzod T.", rating: 4, text: "Narxlari yaxshi. Aloqa biroz tezroq bo'lsa bo'lardi, umuman mamnunman." },
 ];
 
-/** Listings / Reviews tabs for the shop profile. */
-export function ShopTabs({ listingsSlot }: { listingsSlot: ReactNode }) {
+/** Listings / Reviews tabs for the shop profile. Category chips filter the
+ *  shop's listings by brand; categories are derived from the listings. */
+export function ShopTabs({ listings }: { listings: Listing[] }) {
   const [tab, setTab] = useState<"listings" | "reviews">("listings");
+  const [category, setCategory] = useState(ALL);
+
+  const categories = useMemo(() => {
+    const names = Array.from(
+      new Set(
+        listings
+          .map((l) => l.brandName)
+          .filter((n): n is string => Boolean(n)),
+      ),
+    ).sort((a, b) => a.localeCompare(b));
+    return [ALL, ...names];
+  }, [listings]);
+
+  const visible = useMemo(
+    () =>
+      category === ALL
+        ? listings
+        : listings.filter((l) => l.brandName === category),
+    [listings, category],
+  );
 
   return (
     <>
@@ -30,8 +54,24 @@ export function ShopTabs({ listingsSlot }: { listingsSlot: ReactNode }) {
 
       {tab === "listings" ? (
         <>
-          <ChipRow options={CATEGORIES} />
-          {listingsSlot}
+          {categories.length > 1 && (
+            <ChipRow
+              options={categories}
+              selected={category}
+              onSelect={setCategory}
+            />
+          )}
+          {visible.length > 0 ? (
+            <section className="mt-stack-md grid grid-cols-2 gap-gutter pb-4">
+              {visible.map((listing) => (
+                <ProductCard key={listing.id} listing={listing} />
+              ))}
+            </section>
+          ) : (
+            <p className="py-16 text-center text-body-md text-on-surface-variant">
+              Bu turkumda e&apos;lon yo&apos;q.
+            </p>
+          )}
         </>
       ) : (
         <div className="mt-stack-md space-y-stack-md">

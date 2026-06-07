@@ -1,15 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import type { Brand } from "@/lib/types";
 import { cn } from "@/lib/cn";
 
-const ALL = "all";
+export const ALL_BRANDS = "all";
+
+interface BrandChipsProps {
+  brands: Brand[];
+  /** Selected brand id, or `ALL_BRANDS`. */
+  selected: string;
+  onSelect: (id: string) => void;
+}
 
 /** Horizontally-scrolling brand filter chips with single selection. */
-export function BrandChips({ brands }: { brands: Brand[] }) {
-  const [selected, setSelected] = useState(ALL);
-  const options = [{ id: ALL, name: "Barchasi" }, ...brands];
+export function BrandChips({ brands, selected, onSelect }: BrandChipsProps) {
+  const options = [{ id: ALL_BRANDS, name: "Barchasi" }, ...brands];
 
   return (
     <div className="flex gap-stack-sm overflow-x-auto hide-scrollbar px-margin-mobile pb-2">
@@ -19,7 +24,7 @@ export function BrandChips({ brands }: { brands: Brand[] }) {
           <button
             key={brand.id}
             type="button"
-            onClick={() => setSelected(brand.id)}
+            onClick={() => onSelect(brand.id)}
             className={cn(
               "whitespace-nowrap rounded-full px-5 py-2 text-label-md transition-colors",
               active

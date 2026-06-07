@@ -12,12 +12,27 @@ interface TelegramWebAppUser {
   photo_url?: string;
 }
 
+interface TelegramHapticFeedback {
+  impactOccurred?: (
+    style: "light" | "medium" | "heavy" | "rigid" | "soft",
+  ) => void;
+  notificationOccurred?: (type: "error" | "success" | "warning") => void;
+  selectionChanged?: () => void;
+}
+
 interface TelegramWebApp {
   initData: string;
   initDataUnsafe?: { user?: TelegramWebAppUser };
   ready: () => void;
   expand: () => void;
   colorScheme?: "light" | "dark";
+  /** Opens a t.me link inside Telegram (chats, share sheet, etc.). */
+  openTelegramLink?: (url: string) => void;
+  /** Opens an external http(s) link, optionally in the in-app browser. */
+  openLink?: (url: string, options?: { try_instant_view?: boolean }) => void;
+  /** Native alert popup; the callback fires once the user dismisses it. */
+  showAlert?: (message: string, callback?: () => void) => void;
+  HapticFeedback?: TelegramHapticFeedback;
 }
 
 declare global {

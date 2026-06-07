@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ImageCarousel } from "@/components/user/ImageCarousel";
 import { SaveButton } from "@/components/user/SaveButton";
+import { ContactSellerButton } from "@/components/user/ContactSellerButton";
+import { ShareButton } from "@/components/user/ShareButton";
 import { Img } from "@/components/common/Img";
 import { BackButton } from "@/components/common/BackButton";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
@@ -37,20 +39,12 @@ export default async function ListingDetailPage({
       <header className="fixed top-0 z-40 flex h-16 w-full items-center justify-between bg-surface px-margin-mobile py-stack-sm">
         <BackButton fallback="/user" />
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            aria-label="Ulashish"
+          <ShareButton
+            text={`${listing.title} — ${formatPriceFull(listing.price)}`}
             className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container active:scale-95"
           >
             <MaterialSymbol name="share" />
-          </button>
-          <button
-            type="button"
-            aria-label="Boshqa amallar"
-            className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container active:scale-95"
-          >
-            <MaterialSymbol name="more_vert" />
-          </button>
+          </ShareButton>
         </div>
       </header>
 
@@ -178,13 +172,14 @@ export default async function ListingDetailPage({
             <MaterialSymbol name="call" />
             Qo&apos;ng&apos;iroq
           </a>
-          <button
-            type="button"
+          <ContactSellerButton
+            telegram={shop?.telegram}
+            listing={{ title: listing.title, price: listing.price }}
             className="flex h-14 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-primary text-headline-md text-on-primary shadow-lg shadow-primary/20 transition-colors hover:bg-primary-container active:scale-[0.98]"
           >
             <MaterialSymbol name="chat" />
             Yozish
-          </button>
+          </ContactSellerButton>
         </div>
       </footer>
     </>

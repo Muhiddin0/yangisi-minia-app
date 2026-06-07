@@ -9,6 +9,9 @@ import { pb } from "@/lib/pb";
 import { toSellerListing } from "@/data/map";
 import type { SellerListing } from "@/lib/types";
 
+/** Max active (non-sold) listings an individual (non-shop) user may keep. */
+export const USER_LISTING_LIMIT = 3;
+
 export interface NewListingInput {
   title: string;
   brandId?: string;
@@ -51,6 +54,20 @@ export async function getMyListings(userId: string): Promise<SellerListing[]> {
 export async function createListing(input: NewListingInput, files: File[]) {
   const user = pb.authStore.record;
   if (!user) throw new Error("Not authenticated");
+
+  // Individual (non-shop) listings are capped per user. Sold ones don't count.
+  if (!input.shopId) {
+    const mine = await pb.collection("listings").getFullList({
+      filter: `owner = "${user.id}" && status != "sold"`,
+      fields: "id,shop",
+    });
+    const individualCount = mine.filter((r) => !r.shop).length;
+    if (individualCount >= USER_LISTING_LIMIT) {
+      throw new Error(
+        `Oddiy foydalanuvchilar bir vaqtda ko'pi bilan ${USER_LISTING_LIMIT} ta e'lon joylashi mumkin. Avval birortasini o'chiring yoki sotilgan deb belgilang.`,
+      );
+    }
+  }
 
   const form = new FormData();
   form.append("title", input.title);

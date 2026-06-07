@@ -38,6 +38,11 @@ export function ProfileClient() {
     : "Xaridor hisobi";
   const initial = name.trim().charAt(0).toUpperCase() || "Y";
 
+  // Approved sellers manage their shop listings; everyone else gets the
+  // individual "my listings" page.
+  const isApprovedSeller = shop?.status === "approved";
+  const myListingsHref = isApprovedSeller ? "/seller/listings" : "/user/listings";
+
   return (
     <main className="px-margin-mobile pb-32">
       {/* Hero */}
@@ -54,15 +59,12 @@ export function ProfileClient() {
 
       {/* Menu */}
       <nav className="mt-2 space-y-2">
-        <Row href="/seller/listings" icon="list_alt" label="Mening e'lonlarim" />
+        <Row href={myListingsHref} icon="list_alt" label="Mening e'lonlarim" />
         <Row
           href="/user/saved"
           icon="favorite"
           label={`Saqlangan (${favorites.size})`}
         />
-        <div className="py-2" />
-        <Row href="#" icon="settings" label="Sozlamalar" />
-        <Row href="#" icon="help_outline" label="Yordam" />
       </nav>
     </main>
   );

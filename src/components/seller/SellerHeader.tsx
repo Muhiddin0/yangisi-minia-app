@@ -47,13 +47,6 @@ export function SellerHeader({ variant = "shop", title }: SellerHeaderProps) {
             <h1 className="text-title-lg text-primary">{title}</h1>
           )}
         </div>
-        <button
-          type="button"
-          aria-label="Sozlamalar"
-          className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant transition-colors hover:bg-surface-container active:scale-95"
-        >
-          <MaterialSymbol name="settings" />
-        </button>
       </div>
     </header>
   );
