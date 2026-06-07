@@ -42,6 +42,13 @@ services:
     restart: unless-stopped
     environment:
       POCKETBASE_ORIGIN: "http://backend:8090"
+      # Telegram webhook bot (app/bot/route.ts) — read at request time.
+      BOT_TOKEN: ${BOT_TOKEN:?set BOT_TOKEN in .env}
+      APP_BASE_URL: ${APP_BASE_URL:-https://wordgram.uz}
+      TELEGRAM_WEBHOOK_SECRET: ${TELEGRAM_WEBHOOK_SECRET:-}
+      # Superuser for the bot's /seller check (reads users.is_seller).
+      POCKETBASE_SUPERUSER_EMAIL: ${POCKETBASE_SUPERUSER_EMAIL:-}
+      POCKETBASE_SUPERUSER_PASSWORD: ${POCKETBASE_SUPERUSER_PASSWORD:-}
     depends_on:
       backend:
         condition: service_healthy

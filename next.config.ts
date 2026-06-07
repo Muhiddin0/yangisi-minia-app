@@ -15,10 +15,15 @@ const nextConfig: NextConfig = {
 
   // Proxy PocketBase through the Next origin, so the mini-app needs only ONE
   // public URL. Browser calls `<origin>/api/...` → forwarded to PocketBase.
+  // `/_/...` is the PocketBase admin (superuser) UI — proxied too so it is
+  // reachable at `<origin>/_/` without exposing port 8090 publicly.
   // In Docker this resolves to the compose service (http://backend:8090) and is
   // baked at build time, so POCKETBASE_ORIGIN must be set as a build arg.
   async rewrites() {
-    return [{ source: "/api/:path*", destination: `${PB_ORIGIN}/api/:path*` }];
+    return [
+      { source: "/api/:path*", destination: `${PB_ORIGIN}/api/:path*` },
+      { source: "/_/:path*", destination: `${PB_ORIGIN}/_/:path*` },
+    ];
   },
 };
 
