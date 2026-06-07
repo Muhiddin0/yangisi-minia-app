@@ -1,0 +1,27 @@
+# Build artifacts & deps (rebuilt inside the image)
+node_modules
+.next
+out
+build
+
+# The PocketBase backend has its own image/build context
+backend
+
+# VCS, tooling, docs, design mockups
+.git
+.gitignore
+.claude
+design
+*.md
+
+# Local env (NEXT_PUBLIC_* and proxy target come from build args instead)
+.env*
+
+# Docker & misc
+Dockerfile
+.dockerignore
+docker-compose.yml
+*.tsbuildinfo
+npm-debug.log*
+.vercel
+.DS_Store

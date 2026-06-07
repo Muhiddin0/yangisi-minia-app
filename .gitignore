@@ -32,6 +32,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# backend (PocketBase) runtime data & binaries
+/backend/pb_data/
+/backend/backups/
+*.exe
+/backend/yangisi-pb
 
 # vercel
 .vercel

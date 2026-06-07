@@ -1,0 +1,11 @@
+# Runtime data must never be baked into the image.
+pb_data/
+backups/
+
+# Windows binary — the image builds its own Linux binary from source.
+*.exe
+
+# Local-only files.
+.env
+Dockerfile
+.dockerignore

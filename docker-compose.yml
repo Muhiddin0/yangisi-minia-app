@@ -1,0 +1,52 @@
+# Production stack: custom PocketBase backend + Next.js web app.
+#
+# The browser only ever talks to the web service (same origin). Next proxies
+# `/api/*` to the backend over the internal network, so PocketBase needs no
+# public URL and there is no CORS.
+#
+# Usage:
+#   cp .env.example .env   # then set BOT_TOKEN
+#   docker compose up -d --build
+
+services:
+  backend:
+    build:
+      context: ./backend
+    image: yangisi-pb
+    restart: unless-stopped
+    environment:
+      # Telegram bot token for the auth-with-telegram endpoint.
+      BOT_TOKEN: ${BOT_TOKEN:?set BOT_TOKEN in .env}
+    volumes:
+      - pb_data:/pb/pb_data
+    ports:
+      # Admin UI (http://127.0.0.1:8090/_/) — bound to localhost only.
+      - "127.0.0.1:8090:8090"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8090/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Empty = browser uses same origin → /api proxy (no CORS).
+        NEXT_PUBLIC_POCKETBASE_URL: ""
+        # Baked into the Next rewrite at build time.
+        POCKETBASE_ORIGIN: "http://backend:8090"
+    image: yangisi-web
+    restart: unless-stopped
+    environment:
+      POCKETBASE_ORIGIN: "http://backend:8090"
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+
+volumes:
+  pb_data:
