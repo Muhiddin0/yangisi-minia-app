@@ -21,6 +21,8 @@ interface ProductCardProps {
 
 /** Product grid card used on home, search, saved and shop screens. */
 export function ProductCard({ listing, aspect = "square" }: ProductCardProps) {
+  // Dedicated poster first, then fall back to the first gallery image.
+  const cover = listing.poster || listing.images[0];
   return (
     <Link
       href={`/user/listing/${listing.id}`}
@@ -32,9 +34,9 @@ export function ProductCard({ listing, aspect = "square" }: ProductCardProps) {
           aspect === "square" ? "aspect-square" : "aspect-[4/5]",
         )}
       >
-        {listing.images[0] ? (
+        {cover ? (
           <Img
-            src={listing.images[0]}
+            src={cover}
             alt={listing.title}
             className="transition-transform duration-500 group-hover:scale-105"
           />

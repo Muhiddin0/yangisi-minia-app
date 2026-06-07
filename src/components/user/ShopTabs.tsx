@@ -11,9 +11,21 @@ import { cn } from "@/lib/cn";
 const ALL = "Barchasi";
 
 const DEMO_REVIEWS = [
-  { name: "Jasur K.", rating: 5, text: "Tez yetkazib berishdi, telefon aynan tavsifdagidek. Tavsiya qilaman!" },
-  { name: "Dilnoza A.", rating: 5, text: "Juda professional do'kon, rasmiy kafolat muammosiz amalga oshdi." },
-  { name: "Bekzod T.", rating: 4, text: "Narxlari yaxshi. Aloqa biroz tezroq bo'lsa bo'lardi, umuman mamnunman." },
+  {
+    name: "Jasur K.",
+    rating: 5,
+    text: "Tez yetkazib berishdi, telefon aynan tavsifdagidek. Tavsiya qilaman!",
+  },
+  {
+    name: "Dilnoza A.",
+    rating: 5,
+    text: "Juda professional do'kon, rasmiy kafolat muammosiz amalga oshdi.",
+  },
+  {
+    name: "Bekzod T.",
+    rating: 4,
+    text: "Narxlari yaxshi. Aloqa biroz tezroq bo'lsa bo'lardi, umuman mamnunman.",
+  },
 ];
 
 /** Listings / Reviews tabs for the shop profile. Category chips filter the
@@ -25,9 +37,7 @@ export function ShopTabs({ listings }: { listings: Listing[] }) {
   const categories = useMemo(() => {
     const names = Array.from(
       new Set(
-        listings
-          .map((l) => l.brandName)
-          .filter((n): n is string => Boolean(n)),
+        listings.map((l) => l.brandName).filter((n): n is string => Boolean(n)),
       ),
     ).sort((a, b) => a.localeCompare(b));
     return [ALL, ...names];
@@ -43,8 +53,11 @@ export function ShopTabs({ listings }: { listings: Listing[] }) {
 
   return (
     <>
-      <div className="sticky top-16 z-30 mt-stack-lg flex border-b border-outline-variant/30 bg-background">
-        <TabButton active={tab === "listings"} onClick={() => setTab("listings")}>
+      <div className="sticky top-0 z-30 mt-stack-lg flex border-b border-outline-variant/30 bg-background">
+        <TabButton
+          active={tab === "listings"}
+          onClick={() => setTab("listings")}
+        >
           E&apos;lonlar
         </TabButton>
         <TabButton active={tab === "reviews"} onClick={() => setTab("reviews")}>
@@ -81,7 +94,9 @@ export function ShopTabs({ listings }: { listings: Listing[] }) {
               className="rounded-xl border border-outline-variant/20 bg-surface-container-lowest p-stack-md shadow-sm"
             >
               <div className="flex items-center justify-between">
-                <span className="text-title-md text-on-surface">{review.name}</span>
+                <span className="text-title-md text-on-surface">
+                  {review.name}
+                </span>
                 <span className="flex items-center gap-0.5">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <MaterialSymbol
@@ -90,13 +105,17 @@ export function ShopTabs({ listings }: { listings: Listing[] }) {
                       filled={index < review.rating}
                       className={cn(
                         "text-[16px]",
-                        index < review.rating ? "text-[#FFB400]" : "text-outline-variant",
+                        index < review.rating
+                          ? "text-[#FFB400]"
+                          : "text-outline-variant",
                       )}
                     />
                   ))}
                 </span>
               </div>
-              <p className="mt-1 text-body-md text-on-surface-variant">{review.text}</p>
+              <p className="mt-1 text-body-md text-on-surface-variant">
+                {review.text}
+              </p>
             </div>
           ))}
         </div>
@@ -120,7 +139,9 @@ function TabButton({
       onClick={onClick}
       className={cn(
         "relative flex-1 py-4 text-center text-body-md transition-colors",
-        active ? "font-bold text-primary" : "text-on-surface-variant hover:bg-surface-container",
+        active
+          ? "font-bold text-primary"
+          : "text-on-surface-variant hover:bg-surface-container",
       )}
     >
       {children}

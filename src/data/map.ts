@@ -65,6 +65,9 @@ export function toListing(record: RecordModel): Listing {
   const brand = record.expand?.brand as RecordModel | undefined;
   const condition: string = record.condition || "used";
   const images: string[] = Array.isArray(record.images) ? record.images : [];
+  // poster/video are single-file fields; normalize the array-or-string shape.
+  const poster = Array.isArray(record.poster) ? record.poster[0] : record.poster;
+  const video = Array.isArray(record.video) ? record.video[0] : record.video;
 
   return {
     id: record.id,
@@ -83,6 +86,8 @@ export function toListing(record: RecordModel): Listing {
     region: record.region ?? "",
     city: record.city ?? "",
     images: images.map((file) => fileUrl(record, file)),
+    poster: poster ? fileUrl(record, poster) : "",
+    video: video ? fileUrl(record, video) : "",
     description: record.description ?? "",
     publishedAt: relativeTime(record.created),
     shopId: record.shop ?? "",
@@ -111,12 +116,15 @@ export function toShop(record: RecordModel): Shop {
 export function toSellerListing(record: RecordModel): SellerListing {
   const status: string = record.status || "moderation";
   const images: string[] = Array.isArray(record.images) ? record.images : [];
+  // Same cover logic as the public card: prefer the poster, fall back to images[0].
+  const poster = Array.isArray(record.poster) ? record.poster[0] : record.poster;
+  const cover = poster || images[0];
 
   return {
     id: record.id,
     title: record.title ?? "",
     price: record.price ?? 0,
-    image: images[0] ? fileUrl(record, images[0]) : "",
+    image: cover ? fileUrl(record, cover) : "",
     status: status as ListingStatus,
     statusLabel: STATUS_LABELS[status] ?? status,
     views: record.views ?? 0,

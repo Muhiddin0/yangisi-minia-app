@@ -11,6 +11,8 @@ import {
   USER_LISTING_LIMIT,
 } from "@/data/client";
 import { MediaUploader } from "@/components/common/form/MediaUploader";
+import { PosterUploader } from "@/components/common/form/PosterUploader";
+import { VideoUploader } from "@/components/common/form/VideoUploader";
 import { ChipSelect } from "@/components/common/form/ChipSelect";
 import { FieldLabel, TextArea, TextField } from "@/components/common/form/Fields";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
@@ -51,6 +53,8 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
 
   const [brands, setBrands] = useState<{ id: string; name: string }[]>([]);
   const [files, setFiles] = useState<File[]>([]);
+  const [poster, setPoster] = useState<File | null>(null);
+  const [video, setVideo] = useState<File | null>(null);
   const [title, setTitle] = useState("");
   const [brandId, setBrandId] = useState("");
   const [model, setModel] = useState("");
@@ -157,6 +161,8 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
           shopId: approvedShop?.id,
         },
         files,
+        poster,
+        video,
       );
       if (mode === "seller") {
         router.replace("/seller/listings");
@@ -177,9 +183,22 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
   return (
     <form onSubmit={submit} className="space-y-stack-lg">
       <section>
-        <FieldLabel className="mb-stack-sm block uppercase">Rasm / Video</FieldLabel>
+        <FieldLabel className="mb-stack-sm block uppercase">Rasmlar *</FieldLabel>
         <MediaUploader value={files} onChange={setFiles} />
       </section>
+
+      <div className="grid grid-cols-2 gap-4">
+        <section>
+          <FieldLabel className="mb-stack-sm block uppercase">Poster</FieldLabel>
+          <PosterUploader value={poster} onChange={setPoster} />
+          <p className="mt-2 text-label-md text-outline">Kartochka uchun (ixtiyoriy)</p>
+        </section>
+        <section>
+          <FieldLabel className="mb-stack-sm block uppercase">Video</FieldLabel>
+          <VideoUploader value={video} onChange={setVideo} />
+          <p className="mt-2 text-label-md text-outline">Maks. 1 daqiqa (ixtiyoriy)</p>
+        </section>
+      </div>
 
       <TextField
         label="Sarlavha *"

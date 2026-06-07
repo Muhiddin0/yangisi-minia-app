@@ -66,6 +66,10 @@ export interface Listing {
   region: string;
   city: string;
   images: string[];
+  /** Dedicated product-card cover image. Empty when none — fall back to images[0]. */
+  poster?: string;
+  /** Short product clip URL (≤ 1 min). Empty when none. */
+  video?: string;
   description: string;
   /** Relative "published" label, e.g. "2 hours ago". */
   publishedAt: string;

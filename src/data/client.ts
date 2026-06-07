@@ -50,8 +50,18 @@ export async function getMyListings(userId: string): Promise<SellerListing[]> {
   return records.map(toSellerListing);
 }
 
-/** Creates a listing owned by the current user, with image uploads. */
-export async function createListing(input: NewListingInput, files: File[]) {
+/**
+ * Creates a listing owned by the current user.
+ * @param files  gallery images (images-only; required ≥ 1, enforced by caller)
+ * @param poster optional product-card cover image
+ * @param video  optional short clip (≤ 1 min, enforced client-side)
+ */
+export async function createListing(
+  input: NewListingInput,
+  files: File[],
+  poster?: File | null,
+  video?: File | null,
+) {
   const user = pb.authStore.record;
   if (!user) throw new Error("Not authenticated");
 
@@ -83,6 +93,8 @@ export async function createListing(input: NewListingInput, files: File[]) {
   form.append("owner", user.id);
   if (input.shopId) form.append("shop", input.shopId);
   for (const file of files) form.append("images", file);
+  if (poster) form.append("poster", poster);
+  if (video) form.append("video", video);
 
   return pb.collection("listings").create(form);
 }

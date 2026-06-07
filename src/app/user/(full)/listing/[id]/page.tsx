@@ -49,7 +49,11 @@ export default async function ListingDetailPage({
       </header>
 
       <main className="pb-32 pt-16">
-        <ImageCarousel images={listing.images} alt={listing.title} />
+        <ImageCarousel
+          images={listing.images}
+          video={listing.video}
+          alt={listing.title}
+        />
 
         {/* Identity */}
         <section className="mt-stack-lg px-margin-mobile">
