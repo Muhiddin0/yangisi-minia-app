@@ -20,22 +20,22 @@ export function ProfileClient() {
     return (
       <div className="flex flex-col items-center py-24 text-center">
         <p className="mb-6 text-body-lg text-on-surface-variant">
-          Sign in to view your profile.
+          Profilingizni ko&apos;rish uchun tizimga kiring.
         </p>
         <Link
           href="/user/onboarding"
           className="rounded-full bg-primary px-8 py-3 text-label-md text-on-primary shadow-md"
         >
-          Sign in
+          Kirish
         </Link>
       </div>
     );
   }
 
-  const name = user.name || user.telegram_username || "Yangisi user";
+  const name = user.name || user.telegram_username || "Yangisi foydalanuvchisi";
   const handle = user.telegram_username
     ? `@${user.telegram_username}`
-    : "Buyer account";
+    : "Xaridor hisobi";
   const initial = name.trim().charAt(0).toUpperCase() || "Y";
 
   return (
@@ -54,15 +54,15 @@ export function ProfileClient() {
 
       {/* Menu */}
       <nav className="mt-2 space-y-2">
-        <Row href="/seller/listings" icon="list_alt" label="My listings" />
+        <Row href="/seller/listings" icon="list_alt" label="Mening e'lonlarim" />
         <Row
           href="/user/saved"
           icon="favorite"
-          label={`Saved (${favorites.size})`}
+          label={`Saqlangan (${favorites.size})`}
         />
         <div className="py-2" />
-        <Row href="#" icon="settings" label="Settings" />
-        <Row href="#" icon="help_outline" label="Help" />
+        <Row href="#" icon="settings" label="Sozlamalar" />
+        <Row href="#" icon="help_outline" label="Yordam" />
       </nav>
     </main>
   );
@@ -77,9 +77,9 @@ function SellerCard({ shop }: { shop: ReturnType<typeof useAuth>["shop"] }) {
       >
         <MaterialSymbol name="storefront" className="text-primary" />
         <div className="flex-1">
-          <p className="text-title-md text-on-surface">Become a seller</p>
+          <p className="text-title-md text-on-surface">Sotuvchi bo&apos;lish</p>
           <p className="text-body-md text-on-surface-variant">
-            Open a shop and sell your phones.
+            Do&apos;kon oching va telefonlaringizni soting.
           </p>
         </div>
         <MaterialSymbol name="chevron_right" className="text-outline" />
@@ -98,7 +98,7 @@ function SellerCard({ shop }: { shop: ReturnType<typeof useAuth>["shop"] }) {
         <div className="flex-1">
           <p className="text-title-md text-on-surface">{shop.name}</p>
           <p className="text-body-md text-on-surface-variant">
-            Open your seller dashboard.
+            Sotuvchi panelini oching.
           </p>
         </div>
         <MaterialSymbol name="chevron_right" className="text-outline" />
@@ -125,8 +125,8 @@ function SellerCard({ shop }: { shop: ReturnType<typeof useAuth>["shop"] }) {
         <p className="text-title-md text-on-surface">{shop.name}</p>
         <p className="text-body-md text-on-surface-variant">
           {rejected
-            ? "Your seller request was rejected."
-            : "Seller request pending approval."}
+            ? "Sotuvchilik so'rovingiz rad etildi."
+            : "Sotuvchilik so'rovingiz ko'rib chiqilmoqda."}
         </p>
       </div>
     </div>

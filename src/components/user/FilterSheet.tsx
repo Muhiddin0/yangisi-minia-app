@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
+import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/cn";
 
 interface FilterSheetProps {
@@ -9,23 +10,23 @@ interface FilterSheetProps {
   onClose: () => void;
 }
 
-const CONDITIONS = ["New", "Used", "Refurbished"];
+const CONDITIONS = ["Yangi", "Ishlatilgan", "Tiklangan"];
 const MEMORY = ["64 GB", "128 GB", "256 GB", "512 GB"];
 const RAM = ["4 GB", "6 GB", "8 GB", "12 GB"];
 const COLORS = [
-  { name: "Black", className: "bg-slate-900" },
-  { name: "Silver", className: "bg-slate-200" },
-  { name: "Blue", className: "bg-blue-600" },
-  { name: "Pink", className: "bg-rose-200" },
-  { name: "Green", className: "bg-emerald-700" },
+  { name: "Qora", className: "bg-slate-900" },
+  { name: "Kumush", className: "bg-slate-300" },
+  { name: "Ko'k", className: "bg-blue-600" },
+  { name: "Pushti", className: "bg-rose-300" },
+  { name: "Yashil", className: "bg-emerald-600" },
 ];
 
 /** Material-3 bottom sheet for refining the search results. */
 export function FilterSheet({ open, onClose }: FilterSheetProps) {
-  const [condition, setCondition] = useState("New");
+  const [condition, setCondition] = useState("Yangi");
   const [memory, setMemory] = useState("128 GB");
   const [ram, setRam] = useState("8 GB");
-  const [color, setColor] = useState("Black");
+  const [color, setColor] = useState("Qora");
   const [price, setPrice] = useState(18_000_000);
 
   return (
@@ -63,20 +64,20 @@ export function FilterSheet({ open, onClose }: FilterSheetProps) {
             <button
               type="button"
               onClick={() => {
-                setCondition("New");
+                setCondition("Yangi");
                 setMemory("128 GB");
                 setRam("8 GB");
-                setColor("Black");
+                setColor("Qora");
                 setPrice(18_000_000);
               }}
               className="rounded-lg px-1 py-1 text-label-md text-primary transition-colors hover:bg-primary/5"
             >
-              Reset
+              Tozalash
             </button>
-            <h2 className="text-headline-md text-on-surface">Filters</h2>
+            <h2 className="text-headline-md text-on-surface">Filtrlar</h2>
             <button
               type="button"
-              aria-label="Close"
+              aria-label="Yopish"
               onClick={onClose}
               className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-container text-on-surface-variant"
             >
@@ -86,14 +87,14 @@ export function FilterSheet({ open, onClose }: FilterSheetProps) {
         </div>
 
         <div className="flex-1 space-y-stack-lg overflow-y-auto px-margin-mobile pb-40">
-          <SelectField label="Brand" options={["All Brands", "Apple", "Samsung", "Google", "Xiaomi", "Honor"]} />
+          <SelectField label="Brend" options={["Barchasi", "Apple", "Samsung", "Google", "Xiaomi", "Honor"]} />
 
-          {/* Price range */}
+          {/* Narx oralig'i */}
           <div>
             <div className="mb-stack-sm flex items-center justify-between px-1">
-              <span className="text-label-md text-on-surface-variant">Price range</span>
+              <span className="text-label-md text-on-surface-variant">Narx oralig&apos;i</span>
               <span className="text-body-md font-semibold text-primary">
-                up to {new Intl.NumberFormat("en-US").format(price)} so&apos;m
+                {formatPrice(price)}gacha
               </span>
             </div>
             <input
@@ -106,36 +107,36 @@ export function FilterSheet({ open, onClose }: FilterSheetProps) {
               className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-surface-container-high accent-primary"
             />
             <div className="mt-stack-sm flex justify-between px-1 text-label-sm text-outline">
-              <span>1M</span>
-              <span>30M+</span>
+              <span>1 mln</span>
+              <span>30+ mln</span>
             </div>
           </div>
 
           <ChipGroup
-            label="Condition"
+            label="Holati"
             options={CONDITIONS}
             value={condition}
             onChange={setCondition}
             pill
           />
           <ChipGroup
-            label="Memory (Internal)"
+            label="Ichki xotira"
             options={MEMORY}
             value={memory}
             onChange={setMemory}
             columns={4}
           />
           <ChipGroup
-            label="RAM"
+            label="Operativ xotira (RAM)"
             options={RAM}
             value={ram}
             onChange={setRam}
           />
 
-          {/* Color */}
+          {/* Rang */}
           <div>
             <span className="mb-stack-sm block px-1 text-label-md text-on-surface-variant">
-              Color
+              Rang
             </span>
             <div className="flex gap-4">
               {COLORS.map((swatch) => {
@@ -146,17 +147,29 @@ export function FilterSheet({ open, onClose }: FilterSheetProps) {
                     type="button"
                     aria-label={swatch.name}
                     onClick={() => setColor(swatch.name)}
-                    className={cn(
-                      "relative flex h-10 w-10 items-center justify-center rounded-full",
-                      swatch.className,
-                      active
-                        ? "ring-2 ring-primary ring-offset-2"
-                        : "border border-outline-variant",
-                    )}
+                    className="flex shrink-0 flex-col items-center gap-1.5"
                   >
-                    {active && (
-                      <MaterialSymbol name="check" className="text-[16px] text-white" />
-                    )}
+                    <span
+                      className={cn(
+                        "relative flex h-10 w-10 items-center justify-center rounded-full",
+                        swatch.className,
+                        active
+                          ? "ring-2 ring-primary ring-offset-2"
+                          : "border border-outline-variant",
+                      )}
+                    >
+                      {active && (
+                        <MaterialSymbol name="check" className="text-[16px] text-white" />
+                      )}
+                    </span>
+                    <span
+                      className={cn(
+                        "text-label-sm",
+                        active ? "text-on-surface" : "text-on-surface-variant",
+                      )}
+                    >
+                      {swatch.name}
+                    </span>
                   </button>
                 );
               })}
@@ -164,8 +177,8 @@ export function FilterSheet({ open, onClose }: FilterSheetProps) {
           </div>
 
           <div className="grid grid-cols-2 gap-stack-md">
-            <SelectField label="Region" options={["Tashkent", "Samarkand", "Bukhara"]} />
-            <SelectField label="City" options={["All Cities", "Yunusobod", "Chilonzor"]} />
+            <SelectField label="Hudud" options={["Toshkent", "Samarqand", "Buxoro"]} />
+            <SelectField label="Shahar" options={["Barchasi", "Yunusobod", "Chilonzor"]} />
           </div>
         </div>
 
@@ -175,7 +188,7 @@ export function FilterSheet({ open, onClose }: FilterSheetProps) {
             onClick={onClose}
             className="w-full rounded-xl bg-primary py-4 text-headline-md text-on-primary shadow-lg shadow-primary/20 transition-transform active:scale-[0.98]"
           >
-            Apply Filters
+            Filtrlarni qo&apos;llash
           </button>
         </div>
       </section>

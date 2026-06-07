@@ -50,9 +50,9 @@ export function SavedList() {
   if (!user) {
     return (
       <EmptyState
-        title="Sign in to see saved phones"
-        body="Log in to save your favorite devices and find them here."
-        cta="Sign in"
+        title="Saqlangan telefonlarni ko'rish uchun kiring"
+        body="Yoqtirgan qurilmalaringizni saqlab, ularni shu yerdan toping."
+        cta="Kirish"
         href="/user/onboarding"
       />
     );
@@ -69,9 +69,9 @@ export function SavedList() {
   if (listings.length === 0) {
     return (
       <EmptyState
-        title="No saved phones yet"
-        body="Explore the marketplace and save your favorite devices here."
-        cta="Start searching"
+        title="Hozircha saqlangan telefon yo'q"
+        body="Bozorni ko'rib chiqing va yoqtirgan qurilmalaringizni shu yerga saqlang."
+        cta="Qidirishni boshlash"
         href="/user/search"
       />
     );

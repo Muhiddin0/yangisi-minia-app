@@ -49,7 +49,7 @@ export function SellerHeader({ variant = "shop", title }: SellerHeaderProps) {
         </div>
         <button
           type="button"
-          aria-label="Settings"
+          aria-label="Sozlamalar"
           className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant transition-colors hover:bg-surface-container active:scale-95"
         >
           <MaterialSymbol name="settings" />

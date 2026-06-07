@@ -3,7 +3,7 @@ import type { Listing } from "@/lib/types";
 import { Img } from "@/components/common/Img";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
 import { SaveButton } from "./SaveButton";
-import { formatUzs } from "@/lib/format";
+import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/cn";
 
 /** Maps a listing condition to its badge styling. */
@@ -58,7 +58,7 @@ export function ProductCard({ listing, aspect = "square" }: ProductCardProps) {
       </div>
       <div className="flex flex-col gap-1 p-stack-sm">
         <span className="text-headline-md leading-tight text-primary">
-          {formatUzs(listing.price)}
+          {formatPrice(listing.price)}
         </span>
         <h3 className="truncate text-body-md text-on-surface-variant">
           {listing.title}

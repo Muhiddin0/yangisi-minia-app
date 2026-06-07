@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Yangisi — Mobile Marketplace",
-  description: "Trusted marketplace for mobile tech, built for Telegram.",
+  title: "Yangisi — Mobil texnika bozori",
+  description: "Telegram uchun yaratilgan, mobil texnika uchun ishonchli savdo maydoni.",
 };
 
 export const viewport: Viewport = {
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="uz" className={inter.variable} suppressHydrationWarning>
       <head>
         {/* Telegram WebApp SDK — exposes initData for auth. Richer SDK usage
             (theme, BackButton, MainButton) is added separately. */}

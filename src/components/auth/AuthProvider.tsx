@@ -107,7 +107,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       typeof window !== "undefined" ? window.Telegram?.WebApp?.initData : "";
     if (!initData) {
       throw new Error(
-        "No Telegram data (initData empty). Open the app from the bot's menu button, not a direct link.",
+        "Telegram ma'lumotlari topilmadi. Ilovani to'g'ridan-to'g'ri havola orqali emas, botning menyu tugmasi orqali oching.",
       );
     }
 
@@ -128,7 +128,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!res.ok) {
       if (res.status === 404) {
         throw new Error(
-          "PocketBase not reachable (404). Restart `npm run dev` and make sure PocketBase is serving.",
+          "Serverga ulanib bo'lmadi (404). Iltimos, birozdan so'ng qayta urinib ko'ring.",
         );
       }
       // Surface PocketBase field-level details, e.g. "email: Cannot be blank."
@@ -228,7 +228,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             } catch (e) {
               // Keep the user anonymous, but remember why so the login
               // screen can show the exact reason.
-              setAuthError(e instanceof Error ? e.message : "Telegram auth failed");
+              setAuthError(e instanceof Error ? e.message : "Telegram orqali kirishda xatolik yuz berdi.");
             }
           }
         }

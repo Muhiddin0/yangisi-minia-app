@@ -39,14 +39,14 @@ export function OnboardingFlow() {
       <header className="mb-stack-lg text-center">
         <h1 className="mb-2 text-headline-xl-mobile text-primary">Yangisi</h1>
         <p className="text-body-md text-on-surface-variant">
-          The trusted marketplace for mobile tech
+          Mobil texnika uchun ishonchli savdo maydoni
         </p>
       </header>
 
       {loading ? (
         <div className="flex items-center gap-2 text-on-surface-variant">
           <MaterialSymbol name="progress_activity" className="animate-spin" />
-          Signing you in…
+          Tizimga kirilmoqda…
         </div>
       ) : (
         <section className="w-full space-y-stack-md">
@@ -56,7 +56,7 @@ export function OnboardingFlow() {
             onClick={() =>
               run(
                 loginWithTelegram,
-                "Telegram login is only available inside the Telegram app.",
+                "Telegram orqali kirish faqat Telegram ilovasida ishlaydi.",
               )
             }
             className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary text-headline-md text-on-primary shadow-md transition-all active:scale-[0.98] disabled:opacity-60"
@@ -66,7 +66,7 @@ export function OnboardingFlow() {
             ) : (
               <>
                 <MaterialSymbol name="send" filled />
-                Continue with Telegram
+                Telegram orqali davom etish
               </>
             )}
           </button>
@@ -74,11 +74,11 @@ export function OnboardingFlow() {
           <button
             type="button"
             disabled={busy}
-            onClick={() => run(loginDev, "Dev login failed. Is PocketBase running?")}
+            onClick={() => run(loginDev, "Test kirish amalga oshmadi. PocketBase ishlayaptimi?")}
             className="flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-outline-variant text-label-lg text-on-surface-variant transition-all active:scale-[0.98] disabled:opacity-60"
           >
             <MaterialSymbol name="science" className="text-[20px]" />
-            Dev login (demo account)
+            Test kirish (demo hisob)
           </button>
 
           {shownError && (
@@ -88,7 +88,7 @@ export function OnboardingFlow() {
           )}
 
           <p className="px-4 text-center text-label-md text-outline">
-            By continuing, you agree to our Terms of Service and Privacy Policy.
+            Davom etish orqali siz Foydalanish shartlari va Maxfiylik siyosatiga rozilik bildirasiz.
           </p>
         </section>
       )}

@@ -9,7 +9,7 @@ const ALL = "all";
 /** Horizontally-scrolling brand filter chips with single selection. */
 export function BrandChips({ brands }: { brands: Brand[] }) {
   const [selected, setSelected] = useState(ALL);
-  const options = [{ id: ALL, name: "All Brands" }, ...brands];
+  const options = [{ id: ALL, name: "Barchasi" }, ...brands];
 
   return (
     <div className="flex gap-stack-sm overflow-x-auto hide-scrollbar px-margin-mobile pb-2">

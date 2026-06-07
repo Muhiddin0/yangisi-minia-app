@@ -34,7 +34,7 @@ export function ImageCarousel({ images, alt }: { images: string[]; alt: string }
       >
         {images.map((src, i) => (
           <div key={i} className="h-full w-full flex-shrink-0">
-            <Img src={src} alt={`${alt} — photo ${i + 1}`} />
+            <Img src={src} alt={`${alt} — ${i + 1}-rasm`} />
           </div>
         ))}
       </div>
@@ -45,7 +45,7 @@ export function ImageCarousel({ images, alt }: { images: string[]; alt: string }
             <button
               key={i}
               type="button"
-              aria-label={`Go to photo ${i + 1}`}
+              aria-label={`${i + 1}-rasmga o'tish`}
               onClick={() => setIndex(i)}
               className={cn(
                 "h-2 w-2 rounded-full transition-colors",

@@ -8,7 +8,7 @@ import { StatCard } from "./StatCard";
 import { ViewsChart } from "./ViewsChart";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
 import { weekdayLabels, weeklyViews } from "@/data/seller";
-import { formatCount, formatSom } from "@/lib/format";
+import { formatCount, formatPriceFull } from "@/lib/format";
 
 export function SellerStatsView() {
   const { user } = useAuth();
@@ -64,7 +64,7 @@ export function SellerStatsView() {
                   {listing.views}
                 </span>
                 <span className="text-title-md text-primary">
-                  {formatSom(listing.price)}
+                  {formatPriceFull(listing.price)}
                 </span>
               </span>
             </div>

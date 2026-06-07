@@ -53,7 +53,7 @@ export function SellerProfileForm() {
       <section className="flex flex-col items-center space-y-md">
         <label className="relative h-28 w-28 cursor-pointer overflow-hidden rounded-full border-4 border-surface-container-highest bg-surface-container-low shadow-lg">
           {preview ? (
-            <img src={preview} alt="Shop logo" className="h-full w-full object-cover" />
+            <img src={preview} alt="Do'kon logosi" className="h-full w-full object-cover" />
           ) : (
             <span className="flex h-full w-full items-center justify-center text-outline">
               <MaterialSymbol name="add_a_photo" className="text-2xl" />

@@ -12,10 +12,10 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { href: "/user", label: "Home", icon: "home" },
-  { href: "/user/search", label: "Search", icon: "search" },
-  { href: "/user/saved", label: "Saved", icon: "favorite" },
-  { href: "/user/profile", label: "Profile", icon: "person" },
+  { href: "/user", label: "Asosiy", icon: "home" },
+  { href: "/user/search", label: "Qidiruv", icon: "search" },
+  { href: "/user/saved", label: "Saqlangan", icon: "favorite" },
+  { href: "/user/profile", label: "Profil", icon: "person" },
 ];
 
 function isActive(pathname: string, href: string): boolean {
@@ -37,7 +37,7 @@ export function UserBottomNav() {
 
       <Link
         href="/user/new"
-        aria-label="Create listing"
+        aria-label="E'lon joylash"
         className="-top-4 relative flex flex-col items-center"
       >
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-on-primary shadow-lg transition-transform active:scale-95">

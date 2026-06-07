@@ -21,9 +21,9 @@ export function SellerGuard({ children }: { children: ReactNode }) {
     return (
       <Gate
         icon="lock"
-        title="Sign in required"
-        body="Sign in to access the seller dashboard."
-        cta="Sign in"
+        title="Tizimga kirish kerak"
+        body="Sotuvchi paneliga kirish uchun tizimga kiring."
+        cta="Kirish"
         href="/user/onboarding"
       />
     );
@@ -33,9 +33,9 @@ export function SellerGuard({ children }: { children: ReactNode }) {
     return (
       <Gate
         icon="storefront"
-        title="No shop yet"
-        body="Open a shop to start selling on the seller dashboard."
-        cta="Become a seller"
+        title="Hozircha do'kon yo'q"
+        body="Sotuvchi panelida sotishni boshlash uchun do'kon oching."
+        cta="Sotuvchi bo'lish"
         href="/user/become-seller"
       />
     );
@@ -45,9 +45,9 @@ export function SellerGuard({ children }: { children: ReactNode }) {
     return (
       <Gate
         icon="pending_actions"
-        title="Shop pending approval"
-        body={`"${shop.name}" is awaiting admin approval. You'll get access once it's approved.`}
-        cta="Back to app"
+        title="Do'kon tasdiqlanmoqda"
+        body={`"${shop.name}" administrator tasdig'ini kutmoqda. Tasdiqlangach kirish ochiladi.`}
+        cta="Ilovaga qaytish"
         href="/user"
       />
     );

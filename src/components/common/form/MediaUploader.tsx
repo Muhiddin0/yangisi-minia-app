@@ -52,7 +52,7 @@ export function MediaUploader({ value, onChange, max = 10 }: MediaUploaderProps)
             )}
             <button
               type="button"
-              aria-label="Remove"
+              aria-label="O'chirish"
               onClick={() => removeAt(index)}
               className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-on-background/60 text-white"
             >

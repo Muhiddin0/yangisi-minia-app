@@ -1,7 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import type { SellerListing } from "@/lib/types";
 import { Img } from "@/components/common/Img";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
-import { formatSom } from "@/lib/format";
+import { ConfirmDialog } from "@/components/common/ConfirmDialog";
+import { formatPriceFull } from "@/lib/format";
 import { cn } from "@/lib/cn";
 
 const STATUS_BADGE: Record<SellerListing["status"], string> = {
@@ -16,11 +20,26 @@ export function SellerListingCard({
   onDelete,
 }: {
   listing: SellerListing;
-  onSold?: (id: string) => void;
-  onDelete?: (id: string) => void;
+  onSold?: (id: string) => void | Promise<void>;
+  onDelete?: (id: string) => void | Promise<void>;
 }) {
   const sold = listing.status === "sold";
   const moderation = listing.status === "moderation";
+
+  // "Sotildi" tasdiqlash oynasi holati.
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [marking, setMarking] = useState(false);
+
+  const confirmSale = async () => {
+    if (!onSold) return;
+    setMarking(true);
+    try {
+      await onSold(listing.id);
+      setConfirmOpen(false);
+    } finally {
+      setMarking(false);
+    }
+  };
 
   return (
     <div
@@ -55,14 +74,14 @@ export function SellerListingCard({
             </span>
             <button
               type="button"
-              aria-label="Listing actions"
+              aria-label="E'lon amallari"
               className="text-outline transition-colors hover:text-primary"
             >
               <MaterialSymbol name="more_vert" />
             </button>
           </div>
           <h3 className="mt-1 line-clamp-1 text-title-md">{listing.title}</h3>
-          <p className="mt-0.5 font-bold text-primary">{formatSom(listing.price)}</p>
+          <p className="mt-0.5 font-bold text-primary">{formatPriceFull(listing.price)}</p>
         </div>
       </div>
 
@@ -100,7 +119,7 @@ export function SellerListingCard({
             onSold && (
               <button
                 type="button"
-                onClick={() => onSold(listing.id)}
+                onClick={() => setConfirmOpen(true)}
                 className="flex items-center gap-1 text-label-lg text-primary"
               >
                 Sotildi
@@ -111,7 +130,7 @@ export function SellerListingCard({
           {onDelete && !sold && (
             <button
               type="button"
-              aria-label="Delete listing"
+              aria-label="E'lonni o'chirish"
               onClick={() => onDelete(listing.id)}
               className="text-error/70 transition-colors hover:text-error"
             >
@@ -120,6 +139,18 @@ export function SellerListingCard({
           )}
         </div>
       </div>
+
+      <ConfirmDialog
+        open={confirmOpen}
+        icon="sell"
+        title="Sotilgan deb belgilansinmi?"
+        message={`"${listing.title}" e'loni sotilgan deb belgilanadi va xaridorlarga ko'rinmay qoladi.`}
+        confirmLabel="Ha, sotildi"
+        cancelLabel="Bekor qilish"
+        busy={marking}
+        onConfirm={confirmSale}
+        onClose={() => setConfirmOpen(false)}
+      />
     </div>
   );
 }

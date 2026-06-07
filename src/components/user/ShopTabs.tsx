@@ -5,12 +5,12 @@ import { MaterialSymbol } from "@/components/common/MaterialSymbol";
 import { ChipRow } from "./ChipRow";
 import { cn } from "@/lib/cn";
 
-const CATEGORIES = ["All Phones", "iPhone", "Samsung", "Xiaomi", "Google Pixel"];
+const CATEGORIES = ["Barchasi", "iPhone", "Samsung", "Xiaomi", "Google Pixel"];
 
 const DEMO_REVIEWS = [
-  { name: "Jasur K.", rating: 5, text: "Fast delivery and the phone was exactly as described. Highly recommend!" },
-  { name: "Dilnoza A.", rating: 5, text: "Very professional shop, official warranty honored without issues." },
-  { name: "Bekzod T.", rating: 4, text: "Good prices. Communication could be a bit quicker, but happy overall." },
+  { name: "Jasur K.", rating: 5, text: "Tez yetkazib berishdi, telefon aynan tavsifdagidek. Tavsiya qilaman!" },
+  { name: "Dilnoza A.", rating: 5, text: "Juda professional do'kon, rasmiy kafolat muammosiz amalga oshdi." },
+  { name: "Bekzod T.", rating: 4, text: "Narxlari yaxshi. Aloqa biroz tezroq bo'lsa bo'lardi, umuman mamnunman." },
 ];
 
 /** Listings / Reviews tabs for the shop profile. */
@@ -21,10 +21,10 @@ export function ShopTabs({ listingsSlot }: { listingsSlot: ReactNode }) {
     <>
       <div className="sticky top-16 z-30 mt-stack-lg flex border-b border-outline-variant/30 bg-background">
         <TabButton active={tab === "listings"} onClick={() => setTab("listings")}>
-          Listings
+          E&apos;lonlar
         </TabButton>
         <TabButton active={tab === "reviews"} onClick={() => setTab("reviews")}>
-          Reviews
+          Sharhlar
         </TabButton>
       </div>
 

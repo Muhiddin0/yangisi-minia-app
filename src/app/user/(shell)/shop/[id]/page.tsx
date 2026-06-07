@@ -52,7 +52,7 @@ export default async function ShopPage({
                   />
                   <span className="text-body-md font-bold">{shop.rating}</span>
                   <span className="text-body-md text-on-surface-variant">
-                    ({shop.reviewsCount} reviews)
+                    ({shop.reviewsCount} sharh)
                   </span>
                 </div>
               )}
@@ -79,14 +79,14 @@ export default async function ShopPage({
               className="flex items-center justify-center gap-2 rounded-xl bg-primary py-3 font-bold text-on-primary shadow-md transition-all hover:opacity-90 active:scale-95"
             >
               <MaterialSymbol name="call" />
-              <span>Call</span>
+              <span>Qo&apos;ng&apos;iroq</span>
             </a>
             <button
               type="button"
               className="flex items-center justify-center gap-2 rounded-xl bg-secondary-container py-3 font-bold text-on-secondary-container transition-all hover:bg-outline-variant/30 active:scale-95"
             >
               <MaterialSymbol name="chat" />
-              <span>Message</span>
+              <span>Yozish</span>
             </button>
           </div>
         </section>

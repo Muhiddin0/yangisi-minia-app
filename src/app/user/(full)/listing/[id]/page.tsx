@@ -6,7 +6,7 @@ import { Img } from "@/components/common/Img";
 import { BackButton } from "@/components/common/BackButton";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
 import type { Spec } from "@/lib/types";
-import { formatUzs } from "@/lib/format";
+import { formatPriceFull } from "@/lib/format";
 import { getListingById, getShopById } from "@/data/queries";
 
 export const dynamic = "force-dynamic";
@@ -21,13 +21,13 @@ export default async function ListingDetailPage({
   const shop = listing.shopId ? await getShopById(listing.shopId) : null;
 
   const specs: Spec[] = [
-    { label: "Brand", value: listing.brandName ?? "—" },
+    { label: "Brend", value: listing.brandName ?? "—" },
     { label: "Model", value: listing.model },
-    { label: "Memory", value: listing.memory },
+    { label: "Xotira", value: listing.memory },
     { label: "RAM", value: listing.ram },
-    { label: "Color", value: listing.color },
+    { label: "Rang", value: listing.color },
     ...(listing.batteryHealth
-      ? [{ label: "Battery", value: `${listing.batteryHealth}% Health` }]
+      ? [{ label: "Batareya", value: `${listing.batteryHealth}% holat` }]
       : []),
   ];
 
@@ -39,14 +39,14 @@ export default async function ListingDetailPage({
         <div className="flex items-center gap-2">
           <button
             type="button"
-            aria-label="Share"
+            aria-label="Ulashish"
             className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container active:scale-95"
           >
             <MaterialSymbol name="share" />
           </button>
           <button
             type="button"
-            aria-label="More options"
+            aria-label="Boshqa amallar"
             className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container active:scale-95"
           >
             <MaterialSymbol name="more_vert" />
@@ -76,19 +76,19 @@ export default async function ListingDetailPage({
           </div>
           <div className="mt-2">
             <p className="text-headline-xl-mobile text-primary">
-              {formatUzs(listing.price)}
+              {formatPriceFull(listing.price)}
             </p>
             <p className="mt-1 text-body-md text-on-surface-variant">
-              Published {listing.publishedAt} • {listing.region}
+              {listing.publishedAt} • {listing.region}
             </p>
           </div>
         </section>
 
         <Divider />
 
-        {/* Specifications */}
+        {/* Xususiyatlar */}
         <section className="px-margin-mobile">
-          <h2 className="mb-stack-md text-headline-md">Specifications</h2>
+          <h2 className="mb-stack-md text-headline-md">Xususiyatlar</h2>
           <div className="grid grid-cols-2 gap-x-gutter gap-y-stack-md">
             {specs.map((spec) => (
               <div key={spec.label} className="flex flex-col">
@@ -101,7 +101,7 @@ export default async function ListingDetailPage({
             {listing.warranty && (
               <div className="col-span-2 flex flex-col">
                 <span className="text-label-md text-on-surface-variant">
-                  Warranty
+                  Kafolat
                 </span>
                 <span className="text-body-lg">{listing.warranty}</span>
               </div>
@@ -111,9 +111,9 @@ export default async function ListingDetailPage({
 
         <Divider />
 
-        {/* Description */}
+        {/* Tavsif */}
         <section className="px-margin-mobile">
-          <h2 className="mb-stack-sm text-headline-md">Description</h2>
+          <h2 className="mb-stack-sm text-headline-md">Tavsif</h2>
           <p className="text-body-lg leading-relaxed text-on-surface-variant">
             {listing.description}
           </p>
@@ -153,7 +153,7 @@ export default async function ListingDetailPage({
                           {shop.rating}
                         </span>
                         <span className="text-label-md text-on-surface-variant">
-                          • {shop.reviewsCount} reviews
+                          • {shop.reviewsCount} sharh
                         </span>
                       </div>
                     )}
@@ -176,14 +176,14 @@ export default async function ListingDetailPage({
             className="flex h-14 flex-1 items-center justify-center gap-2 rounded-xl border-2 border-primary text-headline-md text-primary transition-colors hover:bg-primary/5 active:scale-[0.98]"
           >
             <MaterialSymbol name="call" />
-            Call
+            Qo&apos;ng&apos;iroq
           </a>
           <button
             type="button"
             className="flex h-14 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-primary text-headline-md text-on-primary shadow-lg shadow-primary/20 transition-colors hover:bg-primary-container active:scale-[0.98]"
           >
             <MaterialSymbol name="chat" />
-            Message
+            Yozish
           </button>
         </div>
       </footer>

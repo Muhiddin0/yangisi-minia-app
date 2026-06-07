@@ -25,7 +25,7 @@ export default async function HomePage() {
             className="absolute left-4 top-1/2 -translate-y-1/2 text-outline"
           />
           <span className="text-body-md text-outline-variant">
-            Search phones...
+            Telefon qidirish...
           </span>
         </Link>
       </section>
@@ -35,9 +35,9 @@ export default async function HomePage() {
       </section>
 
       <section className="mt-stack-lg flex items-center justify-between px-margin-mobile">
-        <h2 className="text-headline-md text-on-surface">Recommended</h2>
+        <h2 className="text-headline-md text-on-surface">Tavsiya etamiz</h2>
         <Link href="/user/search" className="text-label-md text-primary">
-          View All
+          Barchasi
         </Link>
       </section>
 

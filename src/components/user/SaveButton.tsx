@@ -46,7 +46,7 @@ export function SaveButton({
   return (
     <button
       type="button"
-      aria-label={saved ? "Remove from saved" : "Save"}
+      aria-label={saved ? "Saqlanganlardan olib tashlash" : "Saqlash"}
       aria-pressed={saved}
       onClick={handleClick}
       className={cn(

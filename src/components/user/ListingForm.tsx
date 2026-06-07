@@ -9,17 +9,28 @@ import { MediaUploader } from "@/components/common/form/MediaUploader";
 import { ChipSelect } from "@/components/common/form/ChipSelect";
 import { FieldLabel, TextArea, TextField } from "@/components/common/form/Fields";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
+import { groupDigits } from "@/lib/format";
+
+/** Ro'yxatda yo'q brend tanlanganda yuboriladigan maxsus qiymat. */
+const OTHER_BRAND = "__other__";
 
 const CONDITIONS = [
-  { value: "new", label: "New" },
-  { value: "like-new", label: "Like New" },
-  { value: "used", label: "Used" },
-  { value: "refurbished", label: "Refurbished" },
+  { value: "new", label: "Yangi" },
+  { value: "like-new", label: "Yangidek" },
+  { value: "used", label: "Ishlatilgan" },
+  { value: "refurbished", label: "Tiklangan" },
 ];
 const MEMORY = ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"];
 const RAM = ["4 GB", "6 GB", "8 GB", "12 GB", "16 GB"];
-const COLORS = ["Black", "White", "Silver", "Blue", "Green", "Gold"];
-const REGIONS = ["Tashkent", "Samarkand", "Bukhara", "Andijan", "Fergana", "Namangan"];
+const COLORS = [
+  { value: "Qora", label: "Qora", swatch: "bg-slate-900" },
+  { value: "Oq", label: "Oq", swatch: "bg-white ring-1 ring-inset ring-outline-variant" },
+  { value: "Kumush", label: "Kumush", swatch: "bg-slate-300" },
+  { value: "Ko'k", label: "Ko'k", swatch: "bg-blue-600" },
+  { value: "Yashil", label: "Yashil", swatch: "bg-emerald-600" },
+  { value: "Oltin", label: "Oltin", swatch: "bg-amber-400" },
+];
+const REGIONS = ["Toshkent", "Samarqand", "Buxoro", "Andijon", "Farg'ona", "Namangan"];
 
 const inputClass =
   "w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-4 py-3 text-body-lg outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary";
@@ -42,8 +53,8 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
   const [condition, setCondition] = useState("used");
   const [memory, setMemory] = useState("128 GB");
   const [ram, setRam] = useState("8 GB");
-  const [color, setColor] = useState("Black");
-  const [region, setRegion] = useState("Tashkent");
+  const [color, setColor] = useState("Qora");
+  const [region, setRegion] = useState("Toshkent");
   const [description, setDescription] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -64,9 +75,9 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
   if (!user) {
     return (
       <Notice
-        title="Sign in to post"
-        body="You need an account to create a listing."
-        cta="Sign in"
+        title="Kirish talab etiladi"
+        body="E'lon joylash uchun hisobingizga kiring."
+        cta="Kirish"
         href="/user/onboarding"
       />
     );
@@ -77,9 +88,9 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
   if (mode === "seller" && !approvedShop) {
     return (
       <Notice
-        title="Approved shop required"
-        body="Your shop must be approved before posting from the seller dashboard."
-        cta="Become a seller"
+        title="Tasdiqlangan do'kon kerak"
+        body="Sotuvchi panelidan e'lon joylash uchun do'koningiz tasdiqlangan bo'lishi kerak."
+        cta="Sotuvchi bo'lish"
         href="/user/become-seller"
       />
     );
@@ -87,9 +98,9 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
 
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!title.trim()) return setError("Title is required.");
-    if (!price || Number(price) <= 0) return setError("Enter a valid price.");
-    if (files.length === 0) return setError("Add at least one photo.");
+    if (!title.trim()) return setError("Sarlavha kiritilishi shart.");
+    if (!price || Number(price) <= 0) return setError("To'g'ri narx kiriting.");
+    if (files.length === 0) return setError("Kamida bitta rasm qo'shing.");
 
     setBusy(true);
     setError("");
@@ -97,7 +108,7 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
       await createListing(
         {
           title,
-          brandId: brandId || undefined,
+          brandId: brandId && brandId !== OTHER_BRAND ? brandId : undefined,
           model,
           price: Number(price),
           condition,
@@ -116,7 +127,7 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
         router.replace("/user");
       }
     } catch {
-      setError("Could not publish. Please check the fields and try again.");
+      setError("E'lonni joylab bo'lmadi. Maydonlarni tekshirib, qayta urinib ko'ring.");
       setBusy(false);
     }
   };
@@ -124,20 +135,20 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
   return (
     <form onSubmit={submit} className="space-y-stack-lg">
       <section>
-        <FieldLabel className="mb-stack-sm block uppercase">Photos / Video</FieldLabel>
+        <FieldLabel className="mb-stack-sm block uppercase">Rasm / Video</FieldLabel>
         <MediaUploader value={files} onChange={setFiles} />
       </section>
 
       <TextField
-        label="Title *"
+        label="Sarlavha *"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="e.g. iPhone 15 Pro Max 256GB"
+        placeholder="Masalan: iPhone 15 Pro Max 256GB"
       />
 
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-1">
-          <FieldLabel>Brand</FieldLabel>
+          <FieldLabel>Brend</FieldLabel>
           <div className="relative">
             <select
               value={brandId}
@@ -149,6 +160,7 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
                   {b.name}
                 </option>
               ))}
+              <option value={OTHER_BRAND}>Boshqa</option>
             </select>
             <MaterialSymbol
               name="expand_more"
@@ -165,7 +177,7 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
       </div>
 
       <div className="space-y-2">
-        <FieldLabel className="block">Condition</FieldLabel>
+        <FieldLabel className="block">Holati</FieldLabel>
         <ChipSelect
           options={CONDITIONS}
           defaultValue="used"
@@ -174,19 +186,25 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
       </div>
 
       <div className="space-y-1">
-        <FieldLabel>Price (so&apos;m) *</FieldLabel>
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          placeholder="0"
-          className={`${inputClass} font-bold`}
-        />
+        <FieldLabel>Narxi *</FieldLabel>
+        <div className="relative">
+          <input
+            type="text"
+            inputMode="numeric"
+            value={groupDigits(price)}
+            onChange={(e) => setPrice(e.target.value.replace(/\D/g, ""))}
+            placeholder="0"
+            className={`${inputClass} pr-16 font-bold`}
+          />
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-body-md text-on-surface-variant">
+            so&apos;m
+          </span>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <FieldLabel className="block">Memory</FieldLabel>
+          <FieldLabel className="block">Xotira</FieldLabel>
           <ChipSelect
             options={MEMORY}
             defaultValue="128 GB"
@@ -196,7 +214,7 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
           />
         </div>
         <div className="space-y-2">
-          <FieldLabel className="block">RAM</FieldLabel>
+          <FieldLabel className="block">Operativ xotira (RAM)</FieldLabel>
           <ChipSelect
             options={RAM}
             defaultValue="8 GB"
@@ -208,12 +226,12 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
       </div>
 
       <div className="space-y-2">
-        <FieldLabel className="block">Color</FieldLabel>
-        <ChipSelect options={COLORS} defaultValue="Black" onChange={setColor} />
+        <FieldLabel className="block">Rang</FieldLabel>
+        <ChipSelect options={COLORS} defaultValue="Qora" onChange={setColor} />
       </div>
 
       <div className="space-y-1">
-        <FieldLabel>Region</FieldLabel>
+        <FieldLabel>Hudud</FieldLabel>
         <div className="relative">
           <select
             value={region}
@@ -232,11 +250,11 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
       </div>
 
       <TextArea
-        label="Description"
+        label="Tavsif"
         rows={4}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Condition, scratches, accessories included…"
+        placeholder="Holati, chizilishlari, qo'shimcha aksessuarlar…"
       />
 
       {error && (
@@ -247,7 +265,7 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
 
       {mode === "user" && (
         <p className="text-body-md text-on-surface-variant">
-          Your listing will be reviewed before it goes live.
+          E&apos;loningiz e&apos;lon qilinishidan oldin tekshiruvdan o&apos;tadi.
         </p>
       )}
 
@@ -259,9 +277,9 @@ export function ListingForm({ mode }: { mode: "user" | "seller" }) {
         {busy ? (
           <MaterialSymbol name="progress_activity" className="animate-spin" />
         ) : mode === "seller" ? (
-          "Publish Listing"
+          "E'lonni joylash"
         ) : (
-          "Submit Listing"
+          "E'lonni yuborish"
         )}
       </button>
     </form>

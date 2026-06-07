@@ -8,11 +8,11 @@ export default function CreateListingPage() {
       <header className="sticky top-0 z-40 flex h-16 w-full items-center justify-between bg-surface px-margin-mobile py-stack-sm">
         <div className="flex items-center gap-4">
           <BackButton fallback="/user" />
-          <h1 className="text-headline-md text-primary">Create Listing</h1>
+          <h1 className="text-headline-md text-primary">Yangi e&apos;lon</h1>
         </div>
         <button
           type="button"
-          aria-label="More options"
+          aria-label="Boshqa amallar"
           className="rounded-full p-2 text-primary transition-colors hover:bg-surface-container active:scale-95"
         >
           <MaterialSymbol name="more_vert" />

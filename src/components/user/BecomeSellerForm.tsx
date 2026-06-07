@@ -33,21 +33,27 @@ export function BecomeSellerForm() {
     return (
       <Notice
         icon="lock"
-        title="Sign in first"
-        body="You need to be signed in to open a shop."
-        cta="Sign in"
+        title="Avval tizimga kiring"
+        body="Do'kon ochish uchun tizimga kirishingiz kerak."
+        cta="Kirish"
         href="/user/onboarding"
       />
     );
   }
 
   if (shop) {
+    const statusLabels: Record<string, string> = {
+      pending: "ko'rib chiqilmoqda",
+      approved: "tasdiqlangan",
+      rejected: "rad etilgan",
+    };
+    const statusLabel = statusLabels[shop.status as string] ?? (shop.status as string);
     return (
       <Notice
         icon="storefront"
-        title="You already have a shop"
-        body={`"${shop.name}" — status: ${shop.status}.`}
-        cta="Back to profile"
+        title="Sizda allaqachon do'kon bor"
+        body={`"${shop.name}" — holati: ${statusLabel}.`}
+        cta="Profilga qaytish"
         href="/user/profile"
       />
     );
@@ -56,7 +62,7 @@ export function BecomeSellerForm() {
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!name.trim()) {
-      setError("Shop name is required.");
+      setError("Do'kon nomi kiritilishi shart.");
       return;
     }
     setBusy(true);
@@ -69,7 +75,7 @@ export function BecomeSellerForm() {
       await refresh();
       router.replace("/user/profile");
     } catch {
-      setError("Could not submit your request. Please try again.");
+      setError("So'rovni yuborib bo'lmadi. Qayta urinib ko'ring.");
       setBusy(false);
     }
   };
@@ -77,8 +83,8 @@ export function BecomeSellerForm() {
   return (
     <form onSubmit={submit} className="space-y-stack-md">
       <p className="rounded-xl border border-[#FFE7C4] bg-[#FFF4E5] p-4 text-body-md text-[#E65100]">
-        Your request will be reviewed by an administrator. Once approved, your
-        listings are published instantly without moderation.
+        So&apos;rovingiz administrator tomonidan ko&apos;rib chiqiladi. Tasdiqlangach,
+        e&apos;lonlaringiz moderatsiyasiz darhol e&apos;lon qilinadi.
       </p>
 
       {/* Logo */}
@@ -88,7 +94,7 @@ export function BecomeSellerForm() {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={URL.createObjectURL(logo)}
-              alt="Shop logo"
+              alt="Do'kon logosi"
               className="h-full w-full object-cover"
             />
           ) : (
@@ -101,18 +107,18 @@ export function BecomeSellerForm() {
             onChange={(e) => setLogo(e.target.files?.[0] ?? null)}
           />
         </label>
-        <span className="text-body-md text-on-surface-variant">Shop logo (optional)</span>
+        <span className="text-body-md text-on-surface-variant">Do&apos;kon logosi (ixtiyoriy)</span>
       </div>
 
       <TextField
-        label="Shop name *"
+        label="Do'kon nomi *"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="e.g. TechnoShop"
+        placeholder="Masalan: TechnoShop"
       />
       <div className="grid grid-cols-2 gap-4">
         <TextField
-          label="Phone"
+          label="Telefon"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="+998 90 123 45 67"
@@ -125,17 +131,17 @@ export function BecomeSellerForm() {
         />
       </div>
       <TextField
-        label="Location"
+        label="Manzil"
         value={location}
         onChange={(e) => setLocation(e.target.value)}
-        placeholder="Tashkent, Yunusobod"
+        placeholder="Toshkent, Yunusobod"
       />
       <TextArea
-        label="About the shop"
+        label="Do'kon haqida"
         rows={3}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="What do you sell?"
+        placeholder="Nima sotasiz?"
       />
 
       {error && (
@@ -152,7 +158,7 @@ export function BecomeSellerForm() {
         {busy ? (
           <MaterialSymbol name="progress_activity" className="animate-spin" />
         ) : (
-          "Submit seller request"
+          "So'rov yuborish"
         )}
       </button>
     </form>

@@ -12,14 +12,14 @@ const ROLES: RoleCard[] = [
   {
     href: "/user",
     icon: "shopping_bag",
-    title: "Buyer app",
-    description: "Browse, search and save phones — the marketplace mini-app.",
+    title: "Xaridor ilovasi",
+    description: "Telefonlarni ko'ring, qidiring va saqlang — bozor mini-ilovasi.",
   },
   {
     href: "/seller",
     icon: "storefront",
-    title: "Seller dashboard",
-    description: "Manage your shop, listings and statistics.",
+    title: "Sotuvchi paneli",
+    description: "Do'koningiz, e'lonlaringiz va statistikangizni boshqaring.",
   },
 ];
 
@@ -33,7 +33,7 @@ export default function LandingPage() {
       <header className="mb-10 text-center">
         <h1 className="text-headline-xl text-primary">Yangisi</h1>
         <p className="mt-2 text-body-lg text-on-surface-variant">
-          The trusted marketplace for mobile tech, built for Telegram.
+          Telegram uchun yaratilgan, mobil texnika uchun ishonchli savdo maydoni.
         </p>
       </header>
 
@@ -65,7 +65,7 @@ export default function LandingPage() {
         href="/user/onboarding"
         className="mt-8 text-label-lg text-primary hover:underline"
       >
-        View onboarding / login screen
+        Kirish / ro&apos;yxatdan o&apos;tish ekrani
       </Link>
 
       {/* Atmospheric decoration */}

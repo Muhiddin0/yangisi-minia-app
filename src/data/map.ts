@@ -16,16 +16,16 @@ import type {
 import { relativeTime } from "@/lib/format";
 
 const CONDITION_LABELS: Record<string, string> = {
-  new: "New",
-  "like-new": "Like New",
-  used: "Used",
-  refurbished: "Refurbished",
+  new: "Yangi",
+  "like-new": "Yangidek",
+  used: "Ishlatilgan",
+  refurbished: "Tiklangan",
 };
 
 const STATUS_LABELS: Record<string, string> = {
-  active: "Active",
-  moderation: "On moderation",
-  sold: "Sold",
+  active: "Faol",
+  moderation: "Tekshiruvda",
+  sold: "Sotilgan",
 };
 
 /**
