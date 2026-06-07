@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Saved - Yangisi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#404754",
+                    "outline-variant": "#c3c6d7",
+                    "inverse-on-surface": "#f0f0fb",
+                    "surface-container-high": "#e7e7f3",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-container": "#2563eb",
+                    "secondary-fixed": "#dce2f3",
+                    "on-primary-container": "#eeefff",
+                    "on-background": "#191b23",
+                    "primary": "#004ac6",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-secondary-fixed": "#151c27",
+                    "surface-container-highest": "#e1e2ed",
+                    "secondary": "#585f6c",
+                    "surface": "#faf8ff",
+                    "surface-dim": "#d9d9e5",
+                    "tertiary-container": "#bc4800",
+                    "on-surface": "#191b23",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e1e2ed",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#ededf9",
+                    "on-secondary-container": "#5e6572",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f3f3fe",
+                    "outline": "#737686",
+                    "secondary-fixed-dim": "#c0c7d6",
+                    "background": "#faf8ff",
+                    "on-tertiary-container": "#ffede6",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#943700",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#faf8ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "secondary-container": "#dce2f3",
+                    "on-surface-variant": "#434655",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed": "#ffdbcd",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2e3039",
+                    "on-primary-fixed": "#00174b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "gutter": "16px",
+                    "margin-desktop": "24px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-xl-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                    "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                    "headline-xl-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                    "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8ff; /* background */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for clean UI */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c3c6d7; /* outline-variant */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 z-40">
+<div class="flex justify-between items-center w-full px-margin-mobile py-stack-sm h-16">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors p-2 rounded-full scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-primary dark:text-inverse-primary font-bold">Yangisi</h1>
+</div>
+<div class="flex items-center">
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors p-2 rounded-full scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-grow px-margin-mobile pt-stack-lg pb-32" id="content-canvas">
+<!-- Toggle Empty State (For demo purpose, normally logic-driven) -->
+<div class="flex justify-end mb-4">
+<button class="text-label-md font-label-md bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full" onclick="toggleEmptyState()">
+                Toggle Empty State
+            </button>
+</div>
+<!-- Saved Listings Grid -->
+<div class="grid grid-cols-2 gap-gutter" id="saved-grid">
+<!-- Card 1 -->
+<div class="flex flex-col gap-2 group" style="opacity: 1; transform: translateY(0px); transition: 0.4s ease-out;">
+<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A premium silver iPhone 15 Pro captured in a minimalist professional product studio setting. The lighting is soft and directional, highlighting the brushed titanium texture. The overall aesthetic is clean and modern, following a light-mode color palette with high-key whites and subtle grey shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn5AwUktnds844c86gfG3RdkHl2K2yz-Sbsvvi7EZxWWek1d05MtFWLR50SIfA4IJvFL8qRl1RTUHUQ70Ww4akNdOOAHBw-JmexRXrc3I39xmsHEAFHZNYJdbqDW5YRQ1m-xcj7k3cXOHqJUPYE6WeYpbO_89BN_bKB5sc5r7-58ir6s1ailDiZ6RKyGOPaMI2wcWrkNVy6REdscI8Oq55g6bnf3Ku_ChkXvD2YUyOhTg2yXf-AK88TRoDm3fq8vXzdpgMZFWXtRs">
+<button class="absolute top-2 right-2 bg-surface/80 backdrop-blur-sm p-2 rounded-full text-primary scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-headline-md font-headline-md text-on-surface">$999</p>
+<p class="text-body-md font-body-md text-on-surface-variant truncate">iPhone 15 Pro - 256GB</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-2 group" style="opacity: 1; transform: translateY(0px); transition: 0.4s ease-out;">
+<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A sleek black Samsung Galaxy S23 Ultra showcased on a pristine white marble surface. The composition is airy and minimal, utilizing a bright natural light source from the side to create elegant reflections on the glass screen. The mood is sophisticated, professional, and tech-forward." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCktLj8akc6PCwIMOv3N3AsB0l3N0IyB4il0h3iP2RM-9GY4kxY7_VLSMl6wJrmO5ZCalLuHXB0dTtg_LCZoi6bFkZWQyhVmrqbDmQCXWB3HnuXN4o6cDtgC3r1Jm14vkchy0rvO11_mSlhXoY_AeaRt_HhJXu_T__Xrsli_PR9zPiVkf7YVvV7uY1qPcQw2ZGMXaOtCZzZ1Tb2YHSvlNMOyjRW9pxUFKsCF_PFWJ_I1XA6iVTTwQUTbHTEEtwS3TvKRyEj1G_eZ6Q">
+<button class="absolute top-2 right-2 bg-surface/80 backdrop-blur-sm p-2 rounded-full text-primary scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-headline-md font-headline-md text-on-surface">$850</p>
+<p class="text-body-md font-body-md text-on-surface-variant truncate">Samsung Galaxy S23 Ultra</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-2 group" style="opacity: 1; transform: translateY(0px); transition: 0.4s ease-out;">
+<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A vibrant Google Pixel 8 Pro in a refreshing mint color, presented against a soft pastel blue background. The lighting is incredibly soft and shadowless, creating a dreamy and approachable modern minimalist feel. The image emphasizes professional product design and a welcoming digital marketplace aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7dgDG24s0gpFV16sfvNFQVYefMTE4QQ7XxVKO-9jiiEBxBN_qKuQynySZHaHqAB93VO_vi-c4Qv-oFZd5xGAq4GI-qPw8EazlHyIHbV-px9Az7ghmkH0akNPbqaX5iJ6YYefoWm0cBt9yqd26dGcXCNYAWc8HOT9sT_KdQWJR_38q5wLUMo84I0YAIgzodUcjslnN4hfYDGdtM7VBxvvVfXE035E82kf5krwBi5xCcOCFA-Bqj3snC-SHj1gdMaKP1_G1QgfsHFI">
+<button class="absolute top-2 right-2 bg-surface/80 backdrop-blur-sm p-2 rounded-full text-primary scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-headline-md font-headline-md text-on-surface">$699</p>
+<p class="text-body-md font-body-md text-on-surface-variant truncate">Google Pixel 8 Pro</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col gap-2 group" style="opacity: 1; transform: translateY(0px); transition: 0.4s ease-out;">
+<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A pristine white iPhone 13 in its original packaging, displayed on a clean wooden desk with a single green plant in the background. The scene is bright and airy with high-key lighting, evoking a sense of reliability and trust for the buyer. The color palette is composed of natural whites, greens, and soft wood tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYEEGbgtRKDgiGD-NFL8v7WFr_4RsduQg5LAb14SDulExH3p7xx6AOrF1_zKsm9JNtKC2gubqysEjM2URvWQ9_cz03oeFU4LRmeuj5r23w4YGY8JWZ_LW4xqtw3JPHYdtXTXF-G3SJ1sOmg-gDFilhtFVcyVFG6ND9eAM5nE5RItoabvrUM9zjj-neMz-v3gdb_UNC1uKt_a8V0AdIKEmYmdABfOUIJ_Z49AP_WaorKSwiLgcrdrnyp8TrxuCs9fI6sp3f-3Mo-yQ">
+<button class="absolute top-2 right-2 bg-surface/80 backdrop-blur-sm p-2 rounded-full text-primary scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-headline-md font-headline-md text-on-surface">$450</p>
+<p class="text-body-md font-body-md text-on-surface-variant truncate">iPhone 13 - Like New</p>
+</div>
+</div>
+</div>
+<!-- Empty State Container (Hidden by default) -->
+<div class="hidden flex flex-col items-center justify-center py-24 text-center" id="empty-state">
+<div class="w-24 h-24 mb-6 rounded-full bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined !text-5xl">favorite</span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface mb-2">No saved phones yet</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mb-8 max-w-[240px]">Explore the marketplace and save your favorite devices here.</p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md shadow-md active:scale-95 transition-transform">
+                Start searching
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-margin-mobile pb-safe pt-2 bg-surface-container-lowest dark:bg-surface-container-high shadow-[0px_-4px_12px_rgba(0,0,0,0.05)] rounded-t-xl">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-variant/10 rounded-full py-2 px-4 transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<!-- Search -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-variant/10 rounded-full py-2 px-4 transition-colors" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-label-sm font-label-sm">Search</span>
+</a>
+<!-- Add -->
+<div class="flex flex-col items-center justify-center pb-2">
+<button class="bg-primary text-on-primary rounded-full p-unit w-12 h-12 flex items-center justify-center shadow-md mb-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Add</span>
+</div>
+<!-- Saved (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold py-2 px-4" href="#">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-label-sm font-label-sm">Saved</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/20 dark:hover:bg-surface-variant/10 rounded-full py-2 px-4 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function toggleEmptyState() {
+            const grid = document.getElementById('saved-grid');
+            const empty = document.getElementById('empty-state');
+            
+            if (grid.classList.contains('hidden')) {
+                grid.classList.remove('hidden');
+                empty.classList.add('hidden');
+            } else {
+                grid.classList.add('hidden');
+                empty.classList.remove('hidden');
+            }
+        }
+
+        // Add some subtle entrance animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('#saved-grid > div');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.4s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+
+
+</body></html>

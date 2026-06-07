@@ -1,0 +1,350 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bottom-sheet-transition {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #004ac6;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#404754",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-on-surface": "#f0f0fb",
+                        "surface-container-high": "#e7e7f3",
+                        "inverse-primary": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed": "#dce2f3",
+                        "on-primary-container": "#eeefff",
+                        "on-background": "#191b23",
+                        "primary": "#004ac6",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-container-highest": "#e1e2ed",
+                        "secondary": "#585f6c",
+                        "surface": "#faf8ff",
+                        "surface-dim": "#d9d9e5",
+                        "tertiary-container": "#bc4800",
+                        "on-surface": "#191b23",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e2ed",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#ededf9",
+                        "on-secondary-container": "#5e6572",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f3f3fe",
+                        "outline": "#737686",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "background": "#faf8ff",
+                        "on-tertiary-container": "#ffede6",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#943700",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "secondary-container": "#dce2f3",
+                        "on-surface-variant": "#434655",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "tertiary-fixed": "#ffdbcd",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3039",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "24px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-xl-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-xl-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface overflow-hidden">
+<!-- Background Content Layer (Simulating Listings Screen) -->
+<main class="fixed inset-0 p-margin-mobile overflow-y-auto">
+<header class="flex justify-between items-center mb-stack-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Yangisi</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Mock Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="aspect-square bg-surface-variant relative">
+<img alt="iPhone 15 Pro" class="w-full h-full object-cover" data-alt="High-quality professional studio product photography of a sleek titanium-colored smartphone. The lighting is soft and directional, highlighting the metallic texture and precise engineering of the device. The background is a clean, minimalist gradient of soft grays, following a modern tech marketplace aesthetic with premium reliability and high-end minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjlwtTvh15Spy1GurH8ZZtm4JIZbSRnxAH_j3p81Mgj45Ya8gqduFpULj8fxQ-ASA8gEY-kTEE0Kwb5NKnvA2Mj95ieDtTwDff4UKfWBsHH11lVHIMfij4ZkqMg0-MHltQZBbOkmInPPWZqOYdRhXdse8oulPNCjc3-eO74rR7rfrg9cYauSslAPO1h0dJ5AszAKYzfofPJBrTfnKHL5i2rraAi0IqbYQZ5rXFU_chTrBEGHxJaq4Ll877sOEyuL2aGeq72770bx8">
+</div>
+<div class="p-stack-md">
+<p class="font-headline-md text-headline-md text-primary">$999</p>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">iPhone 15 Pro Max</p>
+</div>
+</div>
+<!-- Mock Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="aspect-square bg-surface-variant">
+<img alt="Samsung S23" class="w-full h-full object-cover" data-alt="Modern high-resolution product shot of a Samsung Galaxy S23 Ultra in cream color. The phone is angled slightly to show the triple camera setup. Professional studio lighting emphasizes the clean lines and premium glass finish. The composition is airy and spacious, reflecting an efficient and approachable mobile technology marketplace brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdr2zgni4eQeE5fCKPsPoZ2qRd41G8OH4pNL2_qWu6YeNz2AdLZNMjGlGa5h8A3-HIVXHEmShLyb_5rV_gcv8bzans0nbhLY_jJIiyrr7oRy_bt_NtGkAf1qx-TQ-Q1rQEals5GCUhSrSYbYecd6DrfJgHh6xMWxk7cpUtNqtWfsFrrDivz3jbW8czUAhZdwQQSVGDUId9CQP2Kyvo_1E56r01fXjy8UJML2r3UE5e0nkLRFnVUgDAV4H2WUI-B8Unq7Ckefkyfa4">
+</div>
+<div class="p-stack-md">
+<p class="font-headline-md text-headline-md text-primary">$750</p>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Samsung S23 Ultra</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay Backdrop -->
+<div class="fixed inset-0 bg-on-background/40 backdrop-blur-sm z-40 transition-opacity duration-300" id="overlay"></div>
+<!-- Bottom Sheet Filters -->
+<section class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest rounded-t-[28px] max-h-[92vh] overflow-hidden flex flex-col bottom-sheet-transition transform translate-y-0 shadow-2xl" id="bottomSheet">
+<!-- Handle & Header -->
+<div class="flex flex-col items-center pt-stack-sm pb-stack-md">
+<div class="w-10 h-1 rounded-full bg-outline-variant mb-stack-md"></div>
+<div class="w-full px-margin-mobile flex justify-between items-center">
+<button class="text-primary font-label-md text-label-md px-unit py-unit hover:bg-primary/5 rounded-lg transition-colors" id="resetBtn">Reset</button>
+<h2 class="font-headline-md text-headline-md text-on-surface">Filters</h2>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant" id="closeSheet">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-margin-mobile space-y-stack-lg pb-40">
+<!-- Brand Selection -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-stack-sm px-1">Brand</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 appearance-none focus:ring-2 focus:ring-primary focus:border-transparent outline-none font-body-md text-body-md">
+<option>All Brands</option>
+<option>Apple</option>
+<option>Samsung</option>
+<option>Google</option>
+<option>Xiaomi</option>
+<option>OnePlus</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Price Range -->
+<div>
+<div class="flex justify-between items-center mb-stack-sm px-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Price range</label>
+<span class="font-body-md text-body-md text-primary font-semibold">$100 — $2,500</span>
+</div>
+<div class="relative h-6 flex items-center">
+<div class="absolute h-1.5 w-full bg-surface-container-high rounded-full"></div>
+<div class="absolute h-1.5 left-0 right-1/4 bg-primary rounded-full"></div>
+<input class="custom-slider absolute w-full appearance-none bg-transparent pointer-events-auto" max="3000" min="0" type="range" value="2500">
+</div>
+<div class="flex justify-between mt-stack-sm px-1 text-label-sm text-outline">
+<span class="">$0</span>
+<span class="">$3,000+</span>
+</div>
+</div>
+<!-- Condition Chips -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-stack-sm px-1">Condition</label>
+<div class="flex gap-2">
+<button class="px-5 py-2.5 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-colors shadow-sm">New</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors">Used</button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors">Refurbished</button>
+</div>
+</div>
+<!-- Memory Chips -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-stack-sm px-1">Memory (Internal)</label>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-2.5 rounded-xl border border-outline-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors">64 GB</button>
+<button class="py-2.5 rounded-xl border border-primary bg-primary-container/10 text-primary font-label-md text-label-md">128 GB</button>
+<button class="py-2.5 rounded-xl border border-outline-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors">256 GB</button>
+<button class="py-2.5 rounded-xl border border-outline-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors">512 GB</button>
+</div>
+</div>
+<!-- RAM Chips -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-stack-sm px-1">RAM</label>
+<div class="flex gap-2 flex-wrap">
+<button class="px-6 py-2.5 rounded-xl border border-outline-variant font-label-md text-label-md text-on-surface-variant">4 GB</button>
+<button class="px-6 py-2.5 rounded-xl border border-outline-variant font-label-md text-label-md text-on-surface-variant">6 GB</button>
+<button class="px-6 py-2.5 rounded-xl border border-primary bg-primary-container/10 text-primary font-label-md text-label-md">8 GB</button>
+<button class="px-6 py-2.5 rounded-xl border border-outline-variant font-label-md text-label-md text-on-surface-variant">12 GB</button>
+</div>
+</div>
+<!-- Color Palette -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-stack-sm px-1">Color</label>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full bg-slate-900 ring-2 ring-offset-2 ring-primary relative flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'wght' 600;">check</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-slate-200 border border-outline-variant"></button>
+<button class="w-10 h-10 rounded-full bg-blue-600 border border-outline-variant"></button>
+<button class="w-10 h-10 rounded-full bg-rose-200 border border-outline-variant"></button>
+<button class="w-10 h-10 rounded-full bg-emerald-700 border border-outline-variant"></button>
+</div>
+</div>
+<!-- Region & City Selection -->
+<div class="grid grid-cols-2 gap-stack-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-stack-sm px-1">Region</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 appearance-none focus:ring-2 focus:ring-primary outline-none font-body-md text-body-md">
+<option>Tashkent</option>
+<option>Samarkand</option>
+<option>Bukhara</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-stack-sm px-1">City</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 appearance-none focus:ring-2 focus:ring-primary outline-none font-body-md text-body-md">
+<option>All Cities</option>
+<option>Yunusabad</option>
+<option>Chilanzar</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer -->
+<div class="p-margin-mobile bg-surface-container-lowest border-t border-surface-variant/50 sticky bottom-0 z-10 shadow-[0px_-8px_24px_rgba(0,0,0,0.03)] pb-safe-offset-4">
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-headline-md text-headline-md shadow-lg shadow-primary/20 active:scale-[0.98] transition-transform" id="applyBtn">
+                Apply Filters
+            </button>
+</div>
+</section>
+<!-- Navigation Bar (Shared Component Reference) -->
+<nav class="fixed bottom-0 left-0 w-full z-[45] flex justify-around items-end px-margin-mobile pb-safe pt-2 bg-surface-container-lowest shadow-[0px_-4px_12px_rgba(0,0,0,0.05)] rounded-t-xl md:hidden">
+<div class="flex flex-col items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<div class="bg-primary text-on-primary rounded-full p-unit w-12 h-12 flex items-center justify-center shadow-md mb-2">
+<span class="material-symbols-outlined">add</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        const bottomSheet = document.getElementById('bottomSheet');
+        const overlay = document.getElementById('overlay');
+        const closeSheet = document.getElementById('closeSheet');
+        const applyBtn = document.getElementById('applyBtn');
+
+        function hideSheet() {
+            bottomSheet.style.transform = 'translateY(100%)';
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.visibility = 'hidden';
+            }, 300);
+        }
+
+        function showSheet() {
+            overlay.style.visibility = 'visible';
+            overlay.style.opacity = '1';
+            bottomSheet.style.transform = 'translateY(0)';
+        }
+
+        closeSheet.addEventListener('click', hideSheet);
+        applyBtn.addEventListener('click', hideSheet);
+        overlay.addEventListener('click', hideSheet);
+
+        // Simple handle pull interaction
+        let startY;
+        bottomSheet.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+        });
+
+        bottomSheet.addEventListener('touchmove', (e) => {
+            let deltaY = e.touches[0].clientY - startY;
+            if (deltaY > 0 && bottomSheet.scrollTop === 0) {
+                bottomSheet.style.transform = `translateY(${deltaY}px)`;
+            }
+        });
+
+        bottomSheet.addEventListener('touchend', (e) => {
+            let deltaY = e.changedTouches[0].clientY - startY;
+            if (deltaY > 150) {
+                hideSheet();
+            } else {
+                bottomSheet.style.transform = 'translateY(0)';
+            }
+        });
+    </script>
+
+
+</body></html>

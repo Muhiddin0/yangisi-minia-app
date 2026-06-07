@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#3f465e",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-high": "#e7e7f3",
+                    "inverse-on-surface": "#f0f0fb",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-container": "#2563eb",
+                    "secondary-fixed": "#dbe1ff",
+                    "on-primary-container": "#eeefff",
+                    "on-background": "#191b23",
+                    "primary": "#004ac6",
+                    "surface-container-highest": "#e1e1ed",
+                    "on-secondary-fixed": "#141b30",
+                    "secondary": "#575d77",
+                    "on-tertiary-fixed": "#00210c",
+                    "surface": "#faf8ff",
+                    "surface-dim": "#d9d9e4",
+                    "tertiary-fixed-dim": "#75db93",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#007e41",
+                    "on-surface": "#191b23",
+                    "surface-variant": "#e1e1ed",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#5d637d",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#ededf8",
+                    "surface-container-low": "#f3f3fe",
+                    "secondary-fixed-dim": "#bfc5e2",
+                    "background": "#faf8ff",
+                    "outline": "#737686",
+                    "on-tertiary-container": "#c1ffcd",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary": "#006231",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#faf8ff",
+                    "on-tertiary-fixed-variant": "#005228",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "secondary-container": "#dbe1ff",
+                    "surface-tint": "#0053db",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#91f8ad",
+                    "inverse-surface": "#2e3039",
+                    "on-primary-fixed": "#00174b",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "max-width": "1280px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 bg-surface dark:bg-background border-b border-outline-variant dark:border-outline">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full max-w-max-width mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Shop Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPx4eM1nkEkao_6Vmnwbt7Ws6mRsYylu98AfUqxOoPg7x7Df9xZcRIqgwoW2hiLiPpIejP7PX9xKRcge7BVViDPqj65OKoE-S9uyV-15HW2NZVm3AM96KnxZtQPlJSmztF2eh0jiFmbFUSFR9_xWgofAomDWksHHn9ev3E0V-lf88tQo0yuolkqlbyhs4g2oMCt81JuU-ULWBVWkBDo67n6pArsFEHmEjX0WbQyFaLhZUaPibfPJHww3glQniBoWqoTblGW_XD_B4"/>
+</div>
+<h1 class="font-title-lg text-title-lg text-primary dark:text-primary-fixed">Mening e'lonlarim</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors active:opacity-80 active:scale-95">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-mobile mt-6">
+<!-- Filter Tabs -->
+<div class="flex overflow-x-auto hide-scrollbar gap-2 mb-8 -mx-margin-mobile px-margin-mobile">
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-lg text-label-lg whitespace-nowrap shadow-sm transition-all active:scale-95">
+                Hammasi
+            </button>
+<button class="bg-surface-container text-on-secondary-container px-6 py-2.5 rounded-full font-label-lg text-label-lg whitespace-nowrap hover:bg-surface-container-high transition-all active:scale-95">
+                Faol
+            </button>
+<button class="bg-surface-container text-on-secondary-container px-6 py-2.5 rounded-full font-label-lg text-label-lg whitespace-nowrap hover:bg-surface-container-high transition-all active:scale-95">
+                Moderatsiyada
+            </button>
+<button class="bg-surface-container text-on-secondary-container px-6 py-2.5 rounded-full font-label-lg text-label-lg whitespace-nowrap hover:bg-surface-container-high transition-all active:scale-95">
+                Sotilgan
+            </button>
+</div>
+<!-- Listing Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1: iPhone 13 Pro -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant hover:shadow-lg transition-all group relative overflow-hidden">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A premium iPhone 13 Pro in Alpine Green color displayed on a clean white surface with soft studio lighting. The high-resolution product photography emphasizes the sleek glass and stainless steel textures against a minimalist lavender-tinted background, aligning with a corporate modern and professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVOXXk8pUwa5PQ1T7MXiAkRmROU-zJau2EvAXMyrXLUVyiM3Qr2Un1mVci7sMYG2f5BTDV3TRzVKndKFoEW3cWa7hBelKuoy6GGsBAENC2iIv8VJ3dO3bJr3TiudKrO8f7-YJVlzILQnaiqB5kzOuu0tGzSmeDbgchStuRapJ2RZwJe9OYFxK8dvpdzJkwfMD5kdCs7l4KM7z7AI-p7LSs1jwRuIzdtQtfsC4IbWutW0zzTkGzD3enWVn_L16Iu72JC_ri4TFPkYM"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="bg-tertiary/10 text-tertiary px-2 py-0.5 rounded text-label-sm font-label-sm">Faol</span>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md mt-1 line-clamp-1">iPhone 13 Pro 256GB</h3>
+<p class="text-primary font-bold mt-0.5">8 500 000 so'm</p>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex items-center gap-6">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-label-sm font-label-sm">120</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+<span class="text-label-sm font-label-sm">15</span>
+</div>
+<div class="ml-auto">
+<button class="text-primary font-label-lg text-label-lg flex items-center gap-1">
+                            Tahrirlash <span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Samsung S22 Ultra -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant hover:shadow-lg transition-all group relative overflow-hidden">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional product shot of a Samsung Galaxy S22 Ultra smartphone in Burgundy. The device is captured in high detail with soft ambient light, showcasing its matte finish and sophisticated camera module. The surrounding environment is bright and airy with subtle blue-tinted shadows, conveying trust and premium quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqXzgI7ypIL0YssGML7fGzacUWsrBcPwyjiy4Iwu4aSAVlt329AfFijPrDxMz_CRGnYoKw4c_x6-t6qWG-kgHEGM6bcDmvEnCwpj7X3lRi2aVzItZ0ftR_xjK84c4F9YFZyrcL74Ynz-vGhB1ulKF4OMBPvWGIdyJE1Mp9XbwuA2eaGUXcwDRJXs_7b-c_Tk5569PIgyFkWvO7dIUzip4KrYkCss_z_pTIcI5P4lLuUE4OPOjntaJig0EP0CnKC5J4oL5jadIwSGk"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-label-sm font-label-sm">Moderatsiyada</span>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md mt-1 line-clamp-1">Samsung S22 Ultra</h3>
+<p class="text-primary font-bold mt-0.5">7 200 000 so'm</p>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex items-center gap-6 opacity-60">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-label-sm font-label-sm">0</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+<span class="text-label-sm font-label-sm">0</span>
+</div>
+<div class="ml-auto">
+<p class="text-on-surface-variant font-label-sm text-label-sm italic">Tekshirilmoqda...</p>
+</div>
+</div>
+</div>
+<!-- Card 3: Xiaomi 12 Pro -->
+<div class="bg-surface-container-low rounded-xl p-md border border-outline-variant transition-all group relative overflow-hidden">
+<div class="absolute inset-0 bg-white/40 z-10 flex items-center justify-center pointer-events-none">
+<div class="bg-secondary text-white px-4 py-1.5 rounded-full font-label-lg rotate-12 shadow-md">SOTILDI</div>
+</div>
+<div class="flex gap-4 grayscale">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A Xiaomi 12 Pro smartphone photographed in a clean, minimalist setting. The device's sleek metallic body and multi-lens camera system are highlighted by high-key, professional lighting. The color palette is composed of cool grays and soft whites, reinforcing a modern and high-end electronics marketplace atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1ymMCeF-5t4cKMPOniZfC_k2yE7IXf9HlV8IEzYNwZs1_sxsHnwGJS8cs42BCyWvhof9M6N9VH_o8R6K6gPVTr_TmJsmfsG6LkviTc0IiawZ7_c7CSu-HavrPgZOb6mxiK-77D7D4velZTsm3iMxxQXwpJEYlgwbxUIRfz2msxHoiqZ_tH6zmneKHHLu-Hy3KX1Kep8l62gL7hVoFkDfcUvOsSERPa2oYer8jaBwKZWljWWwwjb-tMreL4gl9ZsX7MZpqGPXHC2Y"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<span class="bg-on-secondary-fixed-variant/10 text-on-secondary-fixed-variant px-2 py-0.5 rounded text-label-sm font-label-sm">Sotilgan</span>
+<button class="text-outline">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md mt-1 line-clamp-1">Xiaomi 12 Pro</h3>
+<p class="text-primary font-bold mt-0.5">5 500 000 so'm</p>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex items-center gap-6 grayscale">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-label-sm font-label-sm">458</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+<span class="text-label-sm font-label-sm">29</span>
+</div>
+<div class="ml-auto">
+<button class="text-outline font-label-lg text-label-lg flex items-center gap-1">
+                            Arxivlash
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Logic Placeholder (Asymmetric Decorative Element) -->
+<div class="mt-12 p-8 rounded-3xl bg-primary-container/5 border-2 border-dashed border-primary-container/20 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 bg-primary-container/10 rounded-2xl flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">add_circle</span>
+</div>
+<h4 class="font-title-lg text-title-lg text-on-surface">Yangi e'lon qo'shmoqchimisiz?</h4>
+<p class="text-on-surface-variant max-w-xs mt-2">Sotmoqchi bo'lgan narsangizni rasmini oling va tezda soting!</p>
+<button class="mt-6 bg-primary text-white px-8 py-3 rounded-xl font-label-lg hover:shadow-lg transition-all active:scale-95">
+                E'lon berish
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container dark:bg-surface-container-high shadow-[0_-2px_10px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-5 py-1 hover:bg-secondary-container dark:hover:bg-secondary-fixed-dim transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Asosiy</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 hover:bg-secondary-container transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">E'lonlar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-5 py-1 hover:bg-secondary-container dark:hover:bg-secondary-fixed-dim transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Statistika</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-5 py-1 hover:bg-secondary-container dark:hover:bg-secondary-fixed-dim transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Profil</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for tabs
+        const tabs = document.querySelectorAll('.flex.overflow-x-auto button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                    t.classList.add('bg-surface-container', 'text-on-secondary-container');
+                });
+                tab.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                tab.classList.remove('bg-surface-container', 'text-on-secondary-container');
+            });
+        });
+
+        // Simple parallax effect for images on hover
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const img = card.querySelector('img');
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                img.style.transform = `scale(1.1) translate(${x * 10}px, ${y * 10}px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                const img = card.querySelector('img');
+                img.style.transform = `scale(1) translate(0, 0)`;
+            });
+        });
+    </script>
+</body></html>

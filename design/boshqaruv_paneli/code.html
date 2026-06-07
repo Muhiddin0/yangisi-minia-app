@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-color: #faf8ff;
+            background-image: radial-gradient(at 0% 0%, hsla(220,100%,95%,1) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, hsla(260,100%,95%,1) 0, transparent 50%);
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 100%);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#3f465e",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-high": "#e7e7f3",
+                    "inverse-on-surface": "#f0f0fb",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-container": "#2563eb",
+                    "secondary-fixed": "#dbe1ff",
+                    "on-primary-container": "#eeefff",
+                    "on-background": "#191b23",
+                    "primary": "#004ac6",
+                    "surface-container-highest": "#e1e1ed",
+                    "on-secondary-fixed": "#141b30",
+                    "secondary": "#575d77",
+                    "on-tertiary-fixed": "#00210c",
+                    "surface": "#faf8ff",
+                    "surface-dim": "#d9d9e4",
+                    "tertiary-fixed-dim": "#75db93",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#007e41",
+                    "on-surface": "#191b23",
+                    "surface-variant": "#e1e1ed",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#5d637d",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#ededf8",
+                    "surface-container-low": "#f3f3fe",
+                    "secondary-fixed-dim": "#bfc5e2",
+                    "background": "#faf8ff",
+                    "outline": "#737686",
+                    "on-tertiary-container": "#c1ffcd",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary": "#006231",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#faf8ff",
+                    "on-tertiary-fixed-variant": "#005228",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "secondary-container": "#dbe1ff",
+                    "surface-tint": "#0053db",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#91f8ad",
+                    "inverse-surface": "#2e3039",
+                    "on-primary-fixed": "#00174b",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "max-width": "1280px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar Shell -->
+<header class="bg-surface dark:bg-background border-b border-outline-variant dark:border-outline fixed top-0 left-0 right-0 z-50">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full max-w-max-width mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<img alt="Shop Avatar" class="w-full h-full object-cover" data-alt="A premium close-up portrait of a modern corporate electronics store logo featuring a stylized 'T' in sleek chrome. The background is a soft, out-of-focus lavender and blue gradient, maintaining the high-trust and clean aesthetic of the Uzbek marketplace. Natural, soft lighting highlights the metallic textures of the logo, conveying professional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd7OoEtKCyl-HpaEjxl4IBXowt_EpleTsvK6MjeQsZoUH06TJu_ToaZej0WRnn42fPx2_ZWtVRLRzyCLVxWjgLeRAkuq82ZMNQfxCn_CoQO1h8eve838CMnrHef7rNkBKgnwE51GMjc4xd6rWOgHBTvm-YWyO927Bc2vfSZWB0d5u2fjGsVGtlaoo3iybT5TPdqgnO220Fys6qLu13rlNoKveTljWUmCqN5zsZcSd0ktjXalI115s5OUNOcelj18Dp407dmL64FuM"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-title-md text-title-md text-on-surface">TechnoShop</span>
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Toshkent, O'zbekiston</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors active:opacity-80 active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-mobile pt-24 pb-12 space-y-md">
+<!-- Welcome Section -->
+<section class="flex flex-col gap-1">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Xush kelibsiz, TechnoShop!</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Sizning bugungi statistikangiz va so'nggi yangiliklar.</p>
+</section>
+<!-- Moderation Alert (Bento Pattern) -->
+<div class="bg-[#FFF4E5] border border-[#FFE7C4] rounded-xl p-md flex items-center gap-md">
+<div class="w-10 h-10 bg-[#FF9800]/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[#E65100]" data-icon="pending_actions">pending_actions</span>
+</div>
+<div class="flex-1">
+<p class="font-title-md text-title-md text-[#E65100]">Moderatsiyada: 2 ta e'lon</p>
+<p class="font-body-md text-body-md text-[#E65100]/80">E'lonlaringiz 24 soat ichida ko'rib chiqiladi.</p>
+</div>
+<span class="material-symbols-outlined text-[#E65100] cursor-pointer">chevron_right</span>
+</div>
+<!-- Stats Grid (Material 3 Cards) -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Active Ads -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary mb-sm" data-icon="inventory_2">inventory_2</span>
+<p class="text-on-surface-variant font-label-lg text-label-lg">Faol e'lonlar</p>
+<h3 class="text-on-surface font-headline-sm text-headline-sm">12</h3>
+</div>
+<!-- Views -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary mb-sm" data-icon="visibility">visibility</span>
+<p class="text-on-surface-variant font-label-lg text-label-lg">Ko'rishlar</p>
+<h3 class="text-on-surface font-headline-sm text-headline-sm">1.2k</h3>
+</div>
+<!-- Saved -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-error mb-sm" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<p class="text-on-surface-variant font-label-lg text-label-lg">Saqlanganlar</p>
+<h3 class="text-on-surface font-headline-sm text-headline-sm">45</h3>
+</div>
+<!-- Rating -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-[#FFB300] mb-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-on-surface-variant font-label-lg text-label-lg">Reyting</p>
+<h3 class="text-on-surface font-headline-sm text-headline-sm">4.8</h3>
+</div>
+</div>
+<!-- Bento Grid Layout for Main Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+<!-- Chart Card -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md relative overflow-hidden">
+<div class="flex justify-between items-center">
+<h2 class="font-title-lg text-title-lg text-on-surface">Ko'rishlar (7 kun)</h2>
+<select class="bg-surface-container rounded-lg border-none text-label-lg px-3 py-1 text-on-surface-variant">
+<option>Haftalik</option>
+<option>Oylik</option>
+</select>
+</div>
+<div class="h-48 w-full flex items-end gap-2 px-2 relative group">
+<!-- Simple CSS Line Chart Simulation -->
+<svg class="w-full h-full stroke-primary fill-none stroke-[2px]" viewbox="0 0 400 100">
+<path d="M0 80 Q 50 60, 100 75 T 200 40 T 300 55 T 400 20"></path>
+<path class="fill-primary/5 border-none" d="M0 80 Q 50 60, 100 75 T 200 40 T 300 55 T 400 20 V 100 H 0 Z"></path>
+</svg>
+<!-- Hover Tooltip Line simulation -->
+<div class="absolute inset-0 flex justify-around pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-[1px] h-full bg-primary/20"></div>
+<div class="w-[1px] h-full bg-primary/20"></div>
+<div class="w-[1px] h-full bg-primary/20"></div>
+<div class="w-[1px] h-full bg-primary/20"></div>
+</div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Du</span><span>Se</span><span>Ch</span><span>Pa</span><span>Ju</span><span>Sha</span><span>Yak</span>
+</div>
+</div>
+<!-- Recent Activity List -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md">
+<h2 class="font-title-lg text-title-lg text-on-surface">So'nggi harakatlar</h2>
+<div class="flex flex-col gap-lg">
+<!-- Activity Item 1 -->
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error text-[20px]" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface leading-tight">Yangi saqlash</span>
+<span class="font-body-md text-body-md text-on-surface-variant">iPhone 15 Pro Max e'loningizni saqlashdi.</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">2 min avval</span>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface leading-tight">Yangi sharh</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Sizga 5 yulduzli sharh qoldirishdi.</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">1 soat avval</span>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface leading-tight">E'lon tasdiqlandi</span>
+<span class="font-body-md text-body-md text-on-surface-variant">"MacBook Pro M3" e'loningiz e'lon qilindi.</span>
+<span class="font-label-sm text-label-sm text-outline mt-1">3 soat avval</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-24 right-margin-mobile flex items-center gap-2 px-6 py-4 bg-primary text-on-primary rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="font-title-md text-title-md">Yangi e'lon joylash</span>
+</button>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface-container dark:bg-surface-container-high shadow-[0_-2px_10px_rgba(0,0,0,0.04)] px-4 py-2 pb-safe flex justify-around items-center rounded-t-xl">
+<!-- Asosiy (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-5 py-1 hover:bg-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm-mobile">Asosiy</span>
+</a>
+<!-- E'lonlar (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-5 py-1 hover:bg-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-sm text-label-sm-mobile">E'lonlar</span>
+</a>
+<!-- Statistika (Active - Mapping Dashboard to Statistics intent) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 transition-all scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span class="font-label-sm text-label-sm-mobile">Statistika</span>
+</a>
+<!-- Profil (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-5 py-1 hover:bg-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm-mobile">Profil</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+            if (icon.parentElement.tagName === 'BUTTON' || icon.parentElement.tagName === 'A') {
+                icon.addEventListener('click', function(e) {
+                    // Ripple effect could be added here
+                });
+            }
+        });
+    </script>
+</body></html>

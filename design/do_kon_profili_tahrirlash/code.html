@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#3f465e",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container-high": "#e7e7f3",
+                        "inverse-on-surface": "#f0f0fb",
+                        "inverse-primary": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-primary-container": "#eeefff",
+                        "on-background": "#191b23",
+                        "primary": "#004ac6",
+                        "surface-container-highest": "#e1e1ed",
+                        "on-secondary-fixed": "#141b30",
+                        "secondary": "#575d77",
+                        "on-tertiary-fixed": "#00210c",
+                        "surface": "#faf8ff",
+                        "surface-dim": "#d9d9e4",
+                        "tertiary-fixed-dim": "#75db93",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#007e41",
+                        "on-surface": "#191b23",
+                        "surface-variant": "#e1e1ed",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#5d637d",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#ededf8",
+                        "surface-container-low": "#f3f3fe",
+                        "secondary-fixed-dim": "#bfc5e2",
+                        "background": "#faf8ff",
+                        "outline": "#737686",
+                        "on-tertiary-container": "#c1ffcd",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary": "#006231",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#faf8ff",
+                        "on-tertiary-fixed-variant": "#005228",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "secondary-container": "#dbe1ff",
+                        "surface-tint": "#0053db",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#91f8ad",
+                        "inverse-surface": "#2e3039",
+                        "on-primary-fixed": "#00174b",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "max-width": "1280px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "md": "16px"
+                    },
+                    "fontSize": {
+                        "label-sm-mobile": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-sm-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="bg-surface border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full max-w-max-width mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img alt="Shop Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALLtGi4cuDFxRd7KzBq6In7hQRHLKzBvzsUTg5raSeRknI5XptX6BWMI9LWEK6jKxqzLLpdiSaeXTQdxuIZOKVqjVN8nXjvN-lBoBMLyiyVigzOGuoyDYt2txVT3fIH9KJG1LpT-kkJmn6uA1Q2wKHq8xIOsXkZNnJYj2_VfucwdMBG-OjoUTRjLA5y3tW9brHwyLXeK4d8vdPtE1IkCD_lPLIloxUc7k1PHyxKUaWRCaw3b8M5ppW2bCcfsAn4scLG70RDYJby-U"/>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Yangisi</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-margin-mobile mt-lg space-y-lg">
+<!-- Profile Header Section -->
+<section class="flex flex-col items-center space-y-md">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full border-4 border-surface-container-highest overflow-hidden bg-surface-container-low shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A clean and bright professional profile photo for a technology store. The image shows a modern storefront in the background with soft bokeh. The lighting is bright and airy with a cool blue and white tone consistent with a corporate marketplace aesthetic. Professional studio lighting highlights the details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW4UcyYBmT8po1PU0dxgiwL_wf6xI9a2Udi34hUlC-JhOibFZ-Vnydokjbz4p-oNH8aSC0LN7FtDcJH3Z0Dh0FRR9Ynffz6fxVgTgCg34u8L9jMFrwIl9utYKkFX2ZkJm6sMPrD1Gim1aaDqQUTd38Ba5ojk2CnHXIok0ncydXN73Vref-5YVBc_SkabKG5_ysfmoiHa-vX5E8RioqWLQvCHBoy1bRc7Jpk81fMnrq9NbcrAyvoW5p-9jLjUF-MJ87bR58-7N2jH0"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-on-primary p-2 rounded-full shadow-md hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="w-full space-y-md">
+<div class="space-y-1">
+<label class="text-label-lg font-label-lg text-on-surface-variant px-1">Do'kon nomi</label>
+<input class="w-full h-12 px-md bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-lg" type="text" value="Yangisi Electronics"/>
+</div>
+<div class="space-y-1">
+<label class="text-label-lg font-label-lg text-on-surface-variant px-1">Do'kon haqida</label>
+<textarea class="w-full p-md bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md h-24 resize-none">Eng sifatli va original smartfonlar faqat bizda. 1 yillik kafolat va servis xizmati bilan.</textarea>
+</div>
+</div>
+</section>
+<!-- Verification Status Card -->
+<section class="bg-primary-fixed text-on-primary-fixed p-md rounded-xl flex items-center justify-between border border-primary/10">
+<div class="flex items-center gap-md">
+<div class="bg-primary-container p-2 rounded-full">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md">Tasdiqlangan do'kon</h3>
+<p class="font-body-md text-body-md opacity-80">Sizning do'koningiz barcha tekshiruvlardan o'tgan.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[32px]">check_circle</span>
+</section>
+<!-- Contact Details Bento -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="col-span-1 md:col-span-2">
+<h2 class="font-title-lg text-title-lg mb-sm">Bog'lanish ma'lumotlari</h2>
+</div>
+<!-- Phone -->
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-xl space-y-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">call</span>
+<label class="text-label-lg font-label-lg text-on-surface-variant">Telefon raqami</label>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 bg-surface-container px-2 h-11 rounded-lg border border-outline-variant">
+<img alt="Flag" class="w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKGoSPqpe_4HxrQCxzIc9ae4x0sVOWw8nuH9RMdFnjqt2621gXFqGBMguQF9AgUz51oqsDl52iRZMe9CooxZCTLcb9HSJtjap-jXeBI5avP-Vu9kGLOAAZhe9vyir3SMQmJ03ALswez5_9iutgcucr0LvAggoIA0KVOS8xYM2yfAQOv_AcShGtovRB_-u8-BjGjp8a_aD-Yv40nOpAToOi2oYX0e5gJ5KW0YrGh5csYCI7EtTAeSsjTkzJZI9j4-Z_2SJjb-JW5VE"/>
+<span class="text-body-md">+998</span>
+</div>
+<input class="flex-1 h-11 px-sm bg-transparent border border-outline-variant rounded-lg focus:border-primary outline-none" type="tel" value="90 123 45 67"/>
+</div>
+</div>
+<!-- Telegram -->
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-xl space-y-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">send</span>
+<label class="text-label-lg font-label-lg text-on-surface-variant">Telegram</label>
+</div>
+<input class="w-full h-11 px-md bg-transparent border border-outline-variant rounded-lg focus:border-primary outline-none" type="text" value="@yangisi_uz"/>
+</div>
+<!-- WhatsApp -->
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-xl space-y-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">chat</span>
+<label class="text-label-lg font-label-lg text-on-surface-variant">WhatsApp</label>
+</div>
+<input class="w-full h-11 px-md bg-transparent border border-outline-variant rounded-lg focus:border-primary outline-none" placeholder="https://wa.me/..." type="text"/>
+</div>
+<!-- Working Hours -->
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-xl space-y-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<label class="text-label-lg font-label-lg text-on-surface-variant">Ish vaqti</label>
+</div>
+<input class="w-full h-11 px-md bg-transparent border border-outline-variant rounded-lg focus:border-primary outline-none" type="text" value="09:00 - 20:00 (Har kuni)"/>
+</div>
+</section>
+<!-- Location Section -->
+<section class="space-y-sm">
+<h2 class="font-title-lg text-title-lg">Manzil</h2>
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-xl space-y-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant">location_on</span>
+<input class="w-full h-12 pl-10 pr-md bg-transparent border border-outline-variant rounded-xl focus:border-primary outline-none" type="text" value="Toshkent shahri, Yunusobod tumani, 4-mavze"/>
+</div>
+<div class="w-full h-48 rounded-xl overflow-hidden bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A stylized, clean map view showing a neighborhood in Tashkent with soft pastel colors. The map features minimalist icons for landmarks and clear, professional cartography. The aesthetic is modern, using a lavender and blue-tinted palette that matches the overall application theme. High contrast between roads and building blocks." data-location="Tashkent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmEe6fWnC2Szj9SN8vYS_CVDUoe6DJlYqKIArAvOHbuLsjgCQCy-FXffWixX2Hj80pYVhyIKDA9G5tK2IdKLiQDVYchnCe5_DBy10_ZfAhGn9_qem2YeI1f7aDJjyGbrBK3ZZepmN6-96bb18Gvv-o8OCMrtPLgZr2NCTuxheoAT_HOrD2YLfqQm-wIPGnP-bKF5BEUG4P2vigep0ItXXqrynFNxI9i088xCn0noV9I8kR_YzGhAWNmEFeKTbZ3GdXRvC7AQsdmMs"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary text-on-primary p-2 rounded-full shadow-xl animate-bounce">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Button -->
+<div class="pt-md pb-xl">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-title-md text-title-md shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                Saqlash
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container shadow-[0_-2px_10px_rgba(0,0,0,0.04)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-secondary-container px-5 py-1 hover:bg-secondary-container transition-all active:scale-90">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-[11px]">Asosiy</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container px-5 py-1 hover:bg-secondary-container transition-all active:scale-90">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-sm text-[11px]">E'lonlar</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container px-5 py-1 hover:bg-secondary-container transition-all active:scale-90">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-sm text-[11px]">Statistika</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="font-label-sm text-[11px] font-bold">Profil</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interactions for inputs
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.style.transition = 'transform 0.2s ease';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Save button interaction
+        const saveBtn = document.querySelector('button.bg-primary');
+        saveBtn.addEventListener('click', () => {
+            const originalContent = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Saqlanmoqda...';
+            saveBtn.disabled = true;
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = '<span class="material-symbols-outlined">check</span> Saqlandi!';
+                saveBtn.classList.replace('bg-primary', 'bg-tertiary-container');
+                saveBtn.classList.replace('text-on-primary', 'text-on-tertiary-container');
+                
+                setTimeout(() => {
+                    saveBtn.innerHTML = originalContent;
+                    saveBtn.classList.replace('bg-tertiary-container', 'bg-primary');
+                    saveBtn.classList.replace('text-on-tertiary-container', 'text-on-primary');
+                    saveBtn.disabled = false;
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body></html>
