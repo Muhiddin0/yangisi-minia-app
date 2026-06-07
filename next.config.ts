@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
   // This host changes every ngrok session — update it accordingly.
   allowedDevOrigins: ["02ef-95-214-211-27.ngrok-free.app"],
 
+  // PocketBase admin lives at `/_/` and redirects `/_` → `/_/`. Next's default
+  // trailing-slash redirect does the opposite (`/_/` → `/_`), which creates a
+  // redirect LOOP. Disabling Next's trailing-slash redirect lets `/_/` reach
+  // the proxy below untouched, so the admin UI loads at `<origin>/_/`.
+  skipTrailingSlashRedirect: true,
+
   // Proxy PocketBase through the Next origin, so the mini-app needs only ONE
   // public URL. Browser calls `<origin>/api/...` → forwarded to PocketBase.
   // `/_/...` is the PocketBase admin (superuser) UI — proxied too so it is
@@ -22,6 +28,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       { source: "/api/:path*", destination: `${PB_ORIGIN}/api/:path*` },
+      { source: "/_", destination: `${PB_ORIGIN}/_/` },
       { source: "/_/:path*", destination: `${PB_ORIGIN}/_/:path*` },
     ];
   },
