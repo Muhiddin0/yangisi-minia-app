@@ -9,6 +9,23 @@ export interface Brand {
   name: string;
 }
 
+/**
+ * A home-page hero carousel slide: a promotional image that links somewhere.
+ * Managed by an admin in PocketBase. Exactly one of `listingId` / `shopId` /
+ * `url` is normally set; the carousel resolves them in that priority order.
+ */
+export interface Banner {
+  id: string;
+  title: string;
+  image: string;
+  /** Target listing id, or "" if this slide doesn't link to a listing. */
+  listingId: string;
+  /** Target shop id, or "" if this slide doesn't link to a shop. */
+  shopId: string;
+  /** Arbitrary external URL, used only when no listing/shop is set. */
+  url: string;
+}
+
 export interface Spec {
   label: string;
   value: string;

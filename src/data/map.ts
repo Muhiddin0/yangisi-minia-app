@@ -7,6 +7,7 @@
 import type { RecordModel } from "pocketbase";
 import { POCKETBASE_URL } from "@/lib/pb";
 import type {
+  Banner,
   Brand,
   Listing,
   ListingStatus,
@@ -44,6 +45,19 @@ export function fileUrl(
 
 export function toBrand(record: RecordModel): Brand {
   return { id: record.id, name: record.name };
+}
+
+/** A home-carousel slide. `image` is a single-file field; relations are raw ids. */
+export function toBanner(record: RecordModel): Banner {
+  const image = Array.isArray(record.image) ? record.image[0] : record.image;
+  return {
+    id: record.id,
+    title: record.title ?? "",
+    image: image ? fileUrl(record, image) : "",
+    listingId: record.listing ?? "",
+    shopId: record.shop ?? "",
+    url: record.url ?? "",
+  };
 }
 
 /** A public marketplace listing. Pass an `expand: "brand"` record for the name. */

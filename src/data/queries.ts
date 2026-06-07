@@ -5,8 +5,8 @@
  */
 
 import { createServerClient } from "@/lib/pb";
-import { toBrand, toListing, toShop } from "@/data/map";
-import type { Brand, Listing, Shop } from "@/lib/types";
+import { toBanner, toBrand, toListing, toShop } from "@/data/map";
+import type { Banner, Brand, Listing, Shop } from "@/lib/types";
 
 /** All published listings, newest first. Optionally scoped to a brand. */
 export async function getActiveListings(brandId?: string): Promise<Listing[]> {
@@ -20,6 +20,24 @@ export async function getActiveListings(brandId?: string): Promise<Listing[]> {
     sort: "-created",
   });
   return records.map(toListing);
+}
+
+/**
+ * Active home-page carousel banners, ordered by `sort_order` then newest.
+ * Banners without a usable image are dropped. Tolerant: if the `banners`
+ * collection doesn't exist yet (backend not migrated), returns [].
+ */
+export async function getActiveBanners(): Promise<Banner[]> {
+  const pb = createServerClient();
+  try {
+    const records = await pb.collection("banners").getFullList({
+      filter: "active = true",
+      sort: "sort_order,-created",
+    });
+    return records.map(toBanner).filter((b) => b.image);
+  } catch {
+    return [];
+  }
 }
 
 /** All brands, alphabetically. */

@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { HomeFeed } from "@/components/user/HomeFeed";
+import { BannerCarousel } from "@/components/user/BannerCarousel";
 import { MaterialSymbol } from "@/components/common/MaterialSymbol";
-import { getActiveListings } from "@/data/queries";
+import { getActiveBanners, getActiveListings } from "@/data/queries";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const listings = await getActiveListings();
+  const [listings, banners] = await Promise.all([
+    getActiveListings(),
+    getActiveBanners(),
+  ]);
 
   return (
     <>
@@ -25,6 +29,8 @@ export default async function HomePage() {
           </span>
         </Link>
       </section>
+
+      <BannerCarousel banners={banners} />
 
       <HomeFeed listings={listings} />
     </>
